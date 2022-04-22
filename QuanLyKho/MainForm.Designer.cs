@@ -211,13 +211,14 @@
             // hóaĐơnNhậpToolStripMenuItem1
             // 
             this.hóaĐơnNhậpToolStripMenuItem1.Name = "hóaĐơnNhậpToolStripMenuItem1";
-            this.hóaĐơnNhậpToolStripMenuItem1.Size = new System.Drawing.Size(215, 26);
+            this.hóaĐơnNhậpToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
             this.hóaĐơnNhậpToolStripMenuItem1.Text = "Hóa đơn nhập kho";
+            this.hóaĐơnNhậpToolStripMenuItem1.Click += new System.EventHandler(this.hóaĐơnNhậpToolStripMenuItem1_Click);
             // 
             // hóaĐơnXuấtKhoToolStripMenuItem
             // 
             this.hóaĐơnXuấtKhoToolStripMenuItem.Name = "hóaĐơnXuấtKhoToolStripMenuItem";
-            this.hóaĐơnXuấtKhoToolStripMenuItem.Size = new System.Drawing.Size(215, 26);
+            this.hóaĐơnXuấtKhoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.hóaĐơnXuấtKhoToolStripMenuItem.Text = "Hóa đơn xuất kho";
             // 
             // contextMenuStrip1

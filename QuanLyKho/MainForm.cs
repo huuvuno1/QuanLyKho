@@ -126,5 +126,10 @@ namespace QuanLyKho
         {
             new ReportSanPhamForm().ShowDialog(this);
         }
+
+        private void hóaĐơnNhậpToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new ReportHoaDonNhapForm().ShowDialog(this);
+        }
     }
 }

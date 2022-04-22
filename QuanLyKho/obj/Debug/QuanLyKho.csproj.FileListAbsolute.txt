@@ -39,3 +39,4 @@ D:\code\aspx\QuanLyKho\QuanLyKho\bin\Debug\ShockwaveFlashObjects.dll
 D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.Report.ReportCuaHangForm.resources
 D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.Report.ReportNhaCungCapForm.resources
 D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.Report.ReportSanPhamForm.resources
+D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.Report.ReportHoaDonNhapForm.resources

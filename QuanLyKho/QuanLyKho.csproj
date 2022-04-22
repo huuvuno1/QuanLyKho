@@ -121,6 +121,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>quanlykhoDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Report\CrystalReport_HoaDonNhap.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport_HoaDonNhap.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Report\CrystalReport_NhaCungCap.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -144,6 +150,12 @@
     </Compile>
     <Compile Include="Report\ReportCuaHangForm.Designer.cs">
       <DependentUpon>ReportCuaHangForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\ReportHoaDonNhapForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\ReportHoaDonNhapForm.Designer.cs">
+      <DependentUpon>ReportHoaDonNhapForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Report\ReportNhaCungCapForm.cs">
       <SubType>Form</SubType>
@@ -204,6 +216,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Report\CrystalReport_HoaDonNhap.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport_HoaDonNhap.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\CrystalReport_NhaCungCap.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReport_NhaCungCap.cs</LastGenOutput>
@@ -218,6 +234,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report\ReportCuaHangForm.resx">
       <DependentUpon>ReportCuaHangForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportHoaDonNhapForm.resx">
+      <DependentUpon>ReportHoaDonNhapForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\ReportNhaCungCapForm.resx">
       <DependentUpon>ReportNhaCungCapForm.cs</DependentUpon>
