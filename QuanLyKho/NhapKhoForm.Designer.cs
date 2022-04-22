@@ -37,13 +37,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.comboBoxNcc = new System.Windows.Forms.ComboBox();
             this.listSanPham = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnAddProductToBill = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.inpGiaNhap = new System.Windows.Forms.TextBox();
+            this.btnSearchNcc = new System.Windows.Forms.Button();
+            this.Remove = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.listSanPham)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,6 +83,7 @@
             this.comboxProduct.Name = "comboxProduct";
             this.comboxProduct.Size = new System.Drawing.Size(395, 37);
             this.comboxProduct.TabIndex = 2;
+            this.comboxProduct.SelectedIndexChanged += new System.EventHandler(this.comboxProduct_SelectedIndexChanged);
             this.comboxProduct.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchProducts);
             // 
             // sanPhamTableAdapter1
@@ -137,6 +140,8 @@
             this.listSanPham.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.listSanPham.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.listSanPham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.listSanPham.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Remove});
             this.listSanPham.Location = new System.Drawing.Point(25, 360);
             this.listSanPham.Name = "listSanPham";
             this.listSanPham.RowHeadersWidth = 51;
@@ -145,15 +150,16 @@
             this.listSanPham.TabIndex = 7;
             this.listSanPham.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listSanPham_CellContentClick);
             // 
-            // button2
+            // btnAddProductToBill
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(198, 240);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(219, 42);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Thêm vào hóa đơn";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnAddProductToBill.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddProductToBill.Location = new System.Drawing.Point(198, 240);
+            this.btnAddProductToBill.Name = "btnAddProductToBill";
+            this.btnAddProductToBill.Size = new System.Drawing.Size(219, 42);
+            this.btnAddProductToBill.TabIndex = 8;
+            this.btnAddProductToBill.Text = "Thêm vào hóa đơn";
+            this.btnAddProductToBill.UseVisualStyleBackColor = true;
+            this.btnAddProductToBill.Click += new System.EventHandler(this.btnAddProductToBill_Click);
             // 
             // button3
             // 
@@ -168,9 +174,9 @@
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(615, 183);
+            this.button4.Location = new System.Drawing.Point(789, 181);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(262, 42);
+            this.button4.Size = new System.Drawing.Size(227, 42);
             this.button4.TabIndex = 10;
             this.button4.Text = "Quản lý nhà cung cấp";
             this.button4.UseVisualStyleBackColor = true;
@@ -218,19 +224,39 @@
             this.inpGiaNhap.Size = new System.Drawing.Size(301, 34);
             this.inpGiaNhap.TabIndex = 13;
             // 
+            // btnSearchNcc
+            // 
+            this.btnSearchNcc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchNcc.Location = new System.Drawing.Point(615, 183);
+            this.btnSearchNcc.Name = "btnSearchNcc";
+            this.btnSearchNcc.Size = new System.Drawing.Size(157, 42);
+            this.btnSearchNcc.TabIndex = 15;
+            this.btnSearchNcc.Text = "Tìm kiếm";
+            this.btnSearchNcc.UseVisualStyleBackColor = true;
+            this.btnSearchNcc.Click += new System.EventHandler(this.btnSearchNcc_Click);
+            // 
+            // Remove
+            // 
+            this.Remove.HeaderText = "Remove";
+            this.Remove.MinimumWidth = 6;
+            this.Remove.Name = "Remove";
+            this.Remove.ReadOnly = true;
+            this.Remove.Text = "<=";
+            // 
             // NhapKhoForm
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1043, 624);
+            this.Controls.Add(this.btnSearchNcc);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.inpGiaNhap);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnAddProductToBill);
             this.Controls.Add(this.listSanPham);
             this.Controls.Add(this.comboBoxNcc);
             this.Controls.Add(this.label3);
@@ -259,12 +285,14 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBoxNcc;
         private System.Windows.Forms.DataGridView listSanPham;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAddProductToBill;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox inpGiaNhap;
+        private System.Windows.Forms.Button btnSearchNcc;
+        private System.Windows.Forms.DataGridViewButtonColumn Remove;
     }
 }

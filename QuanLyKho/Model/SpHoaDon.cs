@@ -10,8 +10,19 @@ namespace QuanLyKho.Model
     {
         public int MaSp { get; set; }
         public string TenSanPham { get; set; }
-        public int SoLuongNhap { get; set; }
+        public float SoLuongNhap { get; set; }
+        public float GiaNhap { get; set; }
         public int MaNhaCungCap { get; set; }
         public string TenNhaCungCap { get; set; }
+
+        public SpHoaDon(int masp, string tensp, float soluong, float gianhap, int maNcc, string tenNcc)
+        {
+            MaSp = masp;
+            TenSanPham = tensp;
+            SoLuongNhap = soluong;
+            GiaNhap = gianhap;
+            MaNhaCungCap = maNcc;
+            TenNhaCungCap = tenNcc;
+        }
     }
 }

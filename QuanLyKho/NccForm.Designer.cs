@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView_Ncc = new System.Windows.Forms.DataGridView();
             this.MaNcc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ten = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,31 +54,31 @@
             this.nhanVienTableAdapter1 = new QuanLyKho.quanlykhoDataSetTableAdapters.NhanVienTableAdapter();
             this.nhaCungCapBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nhaCungCapTableAdapter1 = new QuanLyKho.quanlykhoDataSetTableAdapters.NhaCungCapTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Ncc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quanlykhoDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quanlykhoDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quanlykhoDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nhaCungCapBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridView_Ncc
             // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedHeaders;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridView_Ncc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView_Ncc.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView_Ncc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_Ncc.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaNcc,
             this.Ten,
             this.DiaChi,
             this.Email,
             this.SDT});
-            this.dataGridView1.Location = new System.Drawing.Point(42, 198);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(945, 324);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.SelectionChanged += new System.EventHandler(this.selectRow);
+            this.dataGridView_Ncc.Location = new System.Drawing.Point(42, 198);
+            this.dataGridView_Ncc.Name = "dataGridView_Ncc";
+            this.dataGridView_Ncc.RowHeadersWidth = 51;
+            this.dataGridView_Ncc.RowTemplate.Height = 24;
+            this.dataGridView_Ncc.Size = new System.Drawing.Size(945, 324);
+            this.dataGridView_Ncc.TabIndex = 0;
+            this.dataGridView_Ncc.SelectionChanged += new System.EventHandler(this.selectRow);
             // 
             // MaNcc
             // 
@@ -294,12 +294,12 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.inpMa);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridView_Ncc);
             this.Name = "NccForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.closeingForm);
             this.Load += new System.EventHandler(this.NccForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Ncc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quanlykhoDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quanlykhoDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quanlykhoDataSet1)).EndInit();
@@ -310,7 +310,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridView_Ncc;
         private System.Windows.Forms.BindingSource quanlykhoDataSetBindingSource;
         private quanlykhoDataSet quanlykhoDataSet;
         private System.Windows.Forms.Label label1;

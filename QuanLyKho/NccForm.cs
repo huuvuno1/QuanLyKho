@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyKho.DAL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,6 +25,7 @@ namespace QuanLyKho
             {
                 inpAddress.Enabled = inpName.Enabled = inpPhoneNumber.Enabled = inpEmail.Enabled = true;
                 btnAdd.Text = "Lưu";
+                btnEdit.Enabled = btnDelete.Enabled = false;
             }    
             else
             {
@@ -33,7 +35,7 @@ namespace QuanLyKho
                 string phoneNumber = inpPhoneNumber.Text;
                 string email = inpEmail.Text;
                 this.nhaCungCapTableAdapter1.Insert(name, address, phoneNumber, email);
-                this.nhaCungCapTableAdapter1.Fill(this.quanlykhoDataSet.NhaCungCap);
+                dataGridView_Ncc.DataSource = NhaCcDAL.Search("");
                 inpEmail.Text = inpName.Text = inpPhoneNumber.Text = inpAddress.Text = "";
                 inpAddress.Enabled = inpName.Enabled = inpPhoneNumber.Enabled = inpEmail.Enabled = false;
 
@@ -48,7 +50,7 @@ namespace QuanLyKho
         private void selectRow(object sender, EventArgs e)
         {
             btnDelete.Enabled = btnEdit.Enabled = true;
-            foreach(DataGridViewRow row in dataGridView1.SelectedRows)
+            foreach(DataGridViewRow row in dataGridView_Ncc.SelectedRows)
             {
                 inpName.Text = row.Cells["Ten"].Value.ToString();
                 inpAddress.Text = row.Cells["DiaChi"].Value.ToString();
@@ -69,7 +71,7 @@ namespace QuanLyKho
             btnDelete.Enabled = btnEdit.Enabled = false;
             inpAddress.Enabled = inpName.Enabled = inpPhoneNumber.Enabled = inpEmail.Enabled = false;
             inpName.Focus();
-            this.nhaCungCapTableAdapter1.Fill(this.quanlykhoDataSet.NhaCungCap);
+            dataGridView_Ncc.DataSource = NhaCcDAL.Search("");
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -80,7 +82,7 @@ namespace QuanLyKho
 
             string nameOrgin = "", addressOrigin = "", idOrigin = "", emailOrigin = "", phoneOrigin = "";
 
-            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            foreach (DataGridViewRow row in dataGridView_Ncc.SelectedRows)
             {
                  nameOrgin = row.Cells["Ten"].Value.ToString();
                  addressOrigin = row.Cells["DiaChi"].Value.ToString();
@@ -95,15 +97,14 @@ namespace QuanLyKho
             string phoneNumber = inpPhoneNumber.Text;
             string email = inpEmail.Text;
             this.nhaCungCapTableAdapter1.Update(name, address, email, phoneNumber, int.Parse(id), nameOrgin, addressOrigin, emailOrigin, phoneOrigin);
-            this.nhaCungCapTableAdapter1.Fill(this.quanlykhoDataSet.NhaCungCap);
-
+            dataGridView_Ncc.DataSource = NhaCcDAL.Search("");
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             string nameOrgin = "", addressOrigin = "", idOrigin = "", emailOrigin = "", phoneOrigin = "";
 
-            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            foreach (DataGridViewRow row in dataGridView_Ncc.SelectedRows)
             {
                 nameOrgin = row.Cells["Ten"].Value.ToString();
                 addressOrigin = row.Cells["DiaChi"].Value.ToString();

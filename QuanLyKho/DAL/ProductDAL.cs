@@ -26,6 +26,7 @@ namespace QuanLyKho.DAL
             while (reader.Read())
             {
                 Product product = new Product();
+                product.Id = int.Parse(reader["Masp"].ToString());
                 product.Name = reader["Ten"].ToString();
                 product.Description = reader["MoTa"].ToString();
                 product.Quantity = float.Parse(reader["SoLuong"].ToString());

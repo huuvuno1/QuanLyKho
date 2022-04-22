@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyKho.Report;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -109,6 +110,21 @@ namespace QuanLyKho
         {
             ToggleForm<XuatKhoForm>();
 
+        }
+
+        private void cửaHàngToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ToggleForm<ReportCuaHangForm>();
+        }
+
+        private void nhàCungCấpToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ToggleForm<ReportNhaCungCapForm>();
+        }
+
+        private void sảnPhẩmToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new ReportSanPhamForm().ShowDialog(this);
         }
     }
 }
