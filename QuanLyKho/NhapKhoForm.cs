@@ -1,4 +1,5 @@
 ﻿using QuanLyKho.DAL;
+using QuanLyKho.Dialog;
 using QuanLyKho.Model;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -53,8 +55,8 @@ namespace QuanLyKho
 
         private void button1_Click(object sender, EventArgs e)
         {
-            comboxProduct.DroppedDown = true;
             FillDataToProductCombobox();
+            comboxProduct.DroppedDown = true;
         }
 
         private void FillDataToProductCombobox()
@@ -62,8 +64,8 @@ namespace QuanLyKho
             var keyword = comboxProduct.Text;
             var products = ProductDAL.search(keyword);
             comboxProduct.DataSource = products;
-            comboxProduct.DisplayMember = "Name";
-            comboxProduct.ValueMember = "Id";
+            comboxProduct.DisplayMember = "Ten";
+            comboxProduct.ValueMember = "MaSp";
         }
 
         private void FillDataToNccCombobox()
@@ -83,32 +85,45 @@ namespace QuanLyKho
 
         private void listSanPham_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+            if (listSanPham.Columns[e.ColumnIndex].Name == "Remove")
+            {
+                BindingList<SpHoaDon> list = (BindingList<SpHoaDon>)listSanPham.DataSource;
+                for(var i = 0; i < list.Count; i++)
+                {
+                    if (i == e.RowIndex)
+                    {
+                        list.Remove(list[i]);
+                    }
+                }
+            }
+
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            string now = DateTime.Now.ToString("yyyy-MM-dd");
+            string now = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             BindingList<SpHoaDon> list_sp = (BindingList<SpHoaDon>)listSanPham.DataSource;
-            HoaDonNhapDAL.CreateHoaDonNhap(now, "HD_NHAP", 1, list_sp);
+            NhaCungCap ncc = (NhaCungCap)comboBoxNcc.SelectedItem;
+            HoaDonNhapDAL.CreateHoaDonNhap(now, 0, ncc.Id, list_sp);
             MessageBox.Show("Lưu thành công!");
             list_sp = new BindingList<SpHoaDon>();
             listSanPham.DataSource = list_sp;
         }
 
-        private void comboxProduct_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnSearchNcc_Click(object sender, EventArgs e)
         {
-            comboBoxNcc.DroppedDown = true;
             FillDataToNccCombobox();
+            comboBoxNcc.DroppedDown = true;
         }
 
         private void btnAddProductToBill_Click(object sender, EventArgs e)
         {
+            if (!IsNumber(inpSoLuong.Text) && !IsNumber(inpSoLuong.Text))
+            {
+                MessageBox.Show("Cảnh báo", "Bạn phải nhập dữ liệu hợp lệ!");
+                return;
+            }
+
             BindingList<SpHoaDon> sp = (BindingList<SpHoaDon>)listSanPham.DataSource;
 
             if (sp == null)
@@ -117,12 +132,10 @@ namespace QuanLyKho
             }
 
             var comboNcc = (NhaCungCap)comboBoxNcc.SelectedItem;
-            var id_ncc = comboNcc.Id;
-            var ten_ncc = comboNcc.Name;
 
-            var comboSp = (Product)comboxProduct.SelectedItem;
-            var id_sp = comboSp.Id;
-            var ten_sp = comboSp.Name;
+            var comboSp = (SanPham)comboxProduct.SelectedItem;
+            var id_sp = comboSp.MaSp;
+            var ten_sp = comboSp.Ten;
 
             var gia_nhap = float.Parse(inpGiaNhap.Text);
             var so_luong = float.Parse(inpSoLuong.Text);
@@ -130,7 +143,7 @@ namespace QuanLyKho
             bool isExistInList = false;
             foreach (var item in sp)
             {
-                if (item.MaSp == id_sp && item.MaNhaCungCap == id_ncc)
+                if (item.MaSp == id_sp)
                 {
                     var confirmResult = MessageBox.Show("Sản phẩm được nhà cung cấp này cung cấp đã được thêm trước đó.\n Bạn muốn ghi đè không?",
                                      "Cảnh báo!!",
@@ -145,16 +158,55 @@ namespace QuanLyKho
             }
 
             if (!isExistInList)
-                sp.Add(new SpHoaDon(id_sp, ten_sp, so_luong, gia_nhap, id_ncc, ten_ncc));
+                sp.Add(new SpHoaDon(id_sp, ten_sp, so_luong, gia_nhap));
 
             inpGiaNhap.Text = inpSoLuong.Text = "";
 
             listSanPham.DataSource = sp;
             listSanPham.Refresh();
-            //DataGridViewButtonColumn column = new DataGridViewButtonColumn();
-            //column.Name = "remove";
-            //column.Text = "Remove";
-            //listSanPham.Columns.Add(column);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var result = new FormThemSanPham().ShowDialog();
+            if (result == DialogResult.Cancel)
+            {
+                FillDataToProductCombobox();
+            }
+        }
+
+        private void ShowData(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void ValidateSoLuong(object sender, CancelEventArgs e)
+        {
+            if (!IsNumber(inpSoLuong.Text))
+            {
+                errorProviderSoLuong.SetError(inpSoLuong, "Bạn phải nhập số!");
+            }
+            else
+            {
+                errorProviderSoLuong.Clear();
+            }
+        }
+
+        private void ValidateGiaNhap(object sender, CancelEventArgs e)
+        {
+            if (!IsNumber(inpGiaNhap.Text))
+            {
+                errorProviderGiaNhap.SetError(inpGiaNhap, "Bạn phải nhập số!");
+            }
+            else
+            {
+                errorProviderGiaNhap.Clear();
+            }
+        }
+
+        bool IsNumber(string text)
+        {
+            return !string.IsNullOrWhiteSpace(text) && Regex.IsMatch(text, "^[0-9]*$");
         }
     }
 }

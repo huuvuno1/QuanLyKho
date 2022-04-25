@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.inpSoLuong = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.comboxProduct = new System.Windows.Forms.ComboBox();
@@ -37,6 +38,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.comboBoxNcc = new System.Windows.Forms.ComboBox();
             this.listSanPham = new System.Windows.Forms.DataGridView();
+            this.Remove = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnAddProductToBill = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -45,8 +47,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.inpGiaNhap = new System.Windows.Forms.TextBox();
             this.btnSearchNcc = new System.Windows.Forms.Button();
-            this.Remove = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.errorProviderSoLuong = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderGiaNhap = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.listSanPham)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderSoLuong)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderGiaNhap)).BeginInit();
             this.SuspendLayout();
             // 
             // inpSoLuong
@@ -57,9 +62,11 @@
             this.inpSoLuong.Size = new System.Drawing.Size(301, 34);
             this.inpSoLuong.TabIndex = 0;
             this.inpSoLuong.TextChanged += new System.EventHandler(this.inpSearch_TextChanged);
+            this.inpSoLuong.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateSoLuong);
             // 
             // button1
             // 
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(615, 24);
             this.button1.Name = "button1";
@@ -83,7 +90,7 @@
             this.comboxProduct.Name = "comboxProduct";
             this.comboxProduct.Size = new System.Drawing.Size(395, 37);
             this.comboxProduct.TabIndex = 2;
-            this.comboxProduct.SelectedIndexChanged += new System.EventHandler(this.comboxProduct_SelectedIndexChanged);
+            this.comboxProduct.DropDown += new System.EventHandler(this.ShowData);
             this.comboxProduct.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchProducts);
             // 
             // sanPhamTableAdapter1
@@ -150,8 +157,18 @@
             this.listSanPham.TabIndex = 7;
             this.listSanPham.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listSanPham_CellContentClick);
             // 
+            // Remove
+            // 
+            this.Remove.HeaderText = "Remove";
+            this.Remove.MinimumWidth = 6;
+            this.Remove.Name = "Remove";
+            this.Remove.ReadOnly = true;
+            this.Remove.Text = "<=";
+            this.Remove.UseColumnTextForButtonValue = true;
+            // 
             // btnAddProductToBill
             // 
+            this.btnAddProductToBill.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddProductToBill.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddProductToBill.Location = new System.Drawing.Point(198, 240);
             this.btnAddProductToBill.Name = "btnAddProductToBill";
@@ -163,6 +180,7 @@
             // 
             // button3
             // 
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.Location = new System.Drawing.Point(789, 24);
             this.button3.Name = "button3";
@@ -170,9 +188,11 @@
             this.button3.TabIndex = 9;
             this.button3.Text = "Thêm sản phẩm mới";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
+            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.Location = new System.Drawing.Point(789, 181);
             this.button4.Name = "button4";
@@ -223,9 +243,11 @@
             this.inpGiaNhap.Name = "inpGiaNhap";
             this.inpGiaNhap.Size = new System.Drawing.Size(301, 34);
             this.inpGiaNhap.TabIndex = 13;
+            this.inpGiaNhap.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateGiaNhap);
             // 
             // btnSearchNcc
             // 
+            this.btnSearchNcc.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSearchNcc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearchNcc.Location = new System.Drawing.Point(615, 183);
             this.btnSearchNcc.Name = "btnSearchNcc";
@@ -235,13 +257,13 @@
             this.btnSearchNcc.UseVisualStyleBackColor = true;
             this.btnSearchNcc.Click += new System.EventHandler(this.btnSearchNcc_Click);
             // 
-            // Remove
+            // errorProviderSoLuong
             // 
-            this.Remove.HeaderText = "Remove";
-            this.Remove.MinimumWidth = 6;
-            this.Remove.Name = "Remove";
-            this.Remove.ReadOnly = true;
-            this.Remove.Text = "<=";
+            this.errorProviderSoLuong.ContainerControl = this;
+            // 
+            // errorProviderGiaNhap
+            // 
+            this.errorProviderGiaNhap.ContainerControl = this;
             // 
             // NhapKhoForm
             // 
@@ -269,6 +291,8 @@
             this.Text = "Nhập sản phẩm vào kho";
             this.Load += new System.EventHandler(this.NhapKhoForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.listSanPham)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderSoLuong)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderGiaNhap)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -294,5 +318,7 @@
         private System.Windows.Forms.TextBox inpGiaNhap;
         private System.Windows.Forms.Button btnSearchNcc;
         private System.Windows.Forms.DataGridViewButtonColumn Remove;
+        private System.Windows.Forms.ErrorProvider errorProviderSoLuong;
+        private System.Windows.Forms.ErrorProvider errorProviderGiaNhap;
     }
 }

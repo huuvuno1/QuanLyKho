@@ -55,7 +55,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CrystalReport_CuaHang.cs">
+    <Compile Include="DAL\ChiTietSpDAL.cs" />
+    <Compile Include="Dialog\FormChiTietSanPham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\FormChiTietSanPham.Designer.cs">
+      <DependentUpon>FormChiTietSanPham.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialog\FormThemSanPham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialog\FormThemSanPham.Designer.cs">
+      <DependentUpon>FormThemSanPham.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HoaDonNhapKhoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HoaDonNhapKhoForm.Designer.cs">
+      <DependentUpon>HoaDonNhapKhoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ChiTietSp.cs" />
+    <Compile Include="Model\HoaDon.cs" />
+    <Compile Include="Model\HoaDonNhap.cs" />
+    <Compile Include="Model\SanPham.cs" />
+    <Compile Include="Report\CrystalReport_CuaHang.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CrystalReport_CuaHang.rpt</DependentUpon>
@@ -65,7 +88,6 @@
     <Compile Include="DAL\HoaDonNhapDAL.cs" />
     <Compile Include="DAL\NhaCcDAL.cs" />
     <Compile Include="DAL\ProductDAL.cs" />
-    <Compile Include="Model\HoaDon.cs" />
     <Compile Include="Model\NhaCungCap.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\SpHoaDon.cs" />
@@ -108,11 +130,11 @@
     <Compile Include="NhapKhoForm.Designer.cs">
       <DependentUpon>NhapKhoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProductForm.cs">
+    <Compile Include="SanPhamForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProductForm.Designer.cs">
-      <DependentUpon>ProductForm.cs</DependentUpon>
+    <Compile Include="SanPhamForm.Designer.cs">
+      <DependentUpon>SanPhamForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -175,6 +197,7 @@
     <Compile Include="UserControl1.Designer.cs">
       <DependentUpon>UserControl1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\Constant.cs" />
     <Compile Include="Utils\Result.cs" />
     <Compile Include="XuatKhoForm.cs">
       <SubType>Form</SubType>
@@ -182,7 +205,16 @@
     <Compile Include="XuatKhoForm.Designer.cs">
       <DependentUpon>XuatKhoForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="CrystalReport_CuaHang.rpt">
+    <EmbeddedResource Include="Dialog\FormChiTietSanPham.resx">
+      <DependentUpon>FormChiTietSanPham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\FormThemSanPham.resx">
+      <DependentUpon>FormThemSanPham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HoaDonNhapKhoForm.resx">
+      <DependentUpon>HoaDonNhapKhoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\CrystalReport_CuaHang.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReport_CuaHang.cs</LastGenOutput>
     </EmbeddedResource>
@@ -204,8 +236,8 @@
     <EmbeddedResource Include="NhapKhoForm.resx">
       <DependentUpon>NhapKhoForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProductForm.resx">
-      <DependentUpon>ProductForm.cs</DependentUpon>
+    <EmbeddedResource Include="SanPhamForm.resx">
+      <DependentUpon>SanPhamForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -1,4 +1,6 @@
 ﻿using QuanLyKho.DAL;
+using QuanLyKho.Dialog;
+using QuanLyKho.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,12 +13,12 @@ using System.Windows.Forms;
 
 namespace QuanLyKho
 {
-    public partial class ProductForm : Form
+    public partial class SanPhamForm : Form
     {
-        public ProductForm()
+        public SanPhamForm()
         {
             InitializeComponent();
-            this.sanPhamTableAdapter.Fill(this.quanlykhoDataSet.SanPham);
+            dataGridViewSp.DataSource = ProductDAL.search("");
         }
 
         private void ProductForm_Load(object sender, EventArgs e)
@@ -63,13 +65,13 @@ namespace QuanLyKho
 
         private void loadRowToForm(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.RowIndex < 0 || e.RowIndex >= dataGridView1.Rows.Count - 1)
+            if (e.RowIndex < 0 || e.RowIndex >= dataGridViewSp.Rows.Count - 1)
             {
                 inpTenSp.Text = inpGiaSp.Text = inpMoTa.Text = inpDonVi.Text = inpSL.Text = "";
                 btnSave.Enabled = inpTenSp.Enabled = inpGiaSp.Enabled = inpMoTa.Enabled = inpDonVi.Enabled = inpSL.Enabled = false;
                 return;
             }
-            DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+            DataGridViewRow row = dataGridViewSp.Rows[e.RowIndex];
             inpMaSp.Text = row.Cells["MaSp"].Value.ToString();
             inpTenSp.Text = row.Cells["Ten"].Value.ToString();
             inpGiaSp.Text = row.Cells["GiaTien"].Value.ToString();
@@ -88,10 +90,12 @@ namespace QuanLyKho
             {
                 int masp = int.Parse(inpMaSp.Text);
                 string ten = inpTenSp.Text;
-                float gia  = float.Parse(inpGiaSp.Text);
+                float gia = 0;
+                float.TryParse(inpGiaSp.Text, out gia);
                 string donvi = inpDonVi.Text;
                 string mota = inpMoTa.Text;
-                float soluong = float.Parse(inpSL.Text);
+                float soluong = 0;
+                float.TryParse(inpSL.Text, out soluong);
                 var result = ProductDAL.UpdateProduct(masp, ten, mota, donvi, gia);
                 if (!result.Status)
                 {
@@ -100,6 +104,17 @@ namespace QuanLyKho
 
                 string text = inpSearch.Text;
                 sanPhamBindingSource.DataSource = ProductDAL.SearchProduct(text);
+            }
+        }
+
+        private void CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0)
+                return;
+            if (dataGridViewSp.Columns[e.ColumnIndex].Name == "Detail")
+            {
+                BindingList<SanPham> products = (BindingList<SanPham>)dataGridViewSp.DataSource;
+                new FormChiTietSanPham(products[e.RowIndex]).ShowDialog(this);
             }
         }
     }

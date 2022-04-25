@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyKho.DAL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,21 @@ namespace QuanLyKho
         public XuatKhoForm()
         {
             InitializeComponent();
+        }
+
+        private void XuatKhoForm_Load(object sender, EventArgs e)
+        {
+            FillDataToProductCombobox();
+            comboxProduct.Focus();
+        }
+
+        private void FillDataToProductCombobox()
+        {
+            var keyword = comboxProduct.Text;
+            var products = ProductDAL.search(keyword);
+            comboxProduct.DataSource = products;
+            comboxProduct.DisplayMember = "Ten";
+            comboxProduct.ValueMember = "MaSp";
         }
     }
 }

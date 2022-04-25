@@ -22,7 +22,7 @@ namespace QuanLyKho.Report
         private void ReportForm_Load(object sender, EventArgs e)
         {
             ReportDocument report = new ReportDocument();
-            report.Load(@"D:\code\aspx\QuanLyKho\QuanLyKho\CrystalReport_CuaHang.rpt");
+            report.Load(@"D:\code\aspx\QuanLyKho\QuanLyKho\Report\CrystalReport_CuaHang.rpt");
             //report.RecordSelectionFormula = "{tbl_detailOrder.price}";
             crystalReportViewer1.ReportSource = report;
             crystalReportViewer1.RefreshReport();

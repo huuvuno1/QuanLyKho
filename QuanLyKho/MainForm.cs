@@ -22,7 +22,7 @@ namespace QuanLyKho
 
         private void Main_Load(object sender, EventArgs e)
         {
-            ToggleForm<ProductForm>();
+            ToggleForm<SanPhamForm>();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -60,7 +60,7 @@ namespace QuanLyKho
 
         private void xemDanhSáchToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ToggleForm<ProductForm>();
+            ToggleForm<SanPhamForm>();
         }
 
         private void cửaHàngToolStripMenuItem_Click(object sender, EventArgs e)
@@ -75,7 +75,7 @@ namespace QuanLyKho
 
         private void hóaĐơnNhậpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            ToggleForm<HoaDonNhapKhoForm>();
         }
 
         private void ToggleForm<T>() where T : Form, new()

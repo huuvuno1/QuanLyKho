@@ -1,6 +1,6 @@
 ﻿namespace QuanLyKho
 {
-    partial class ProductForm
+    partial class SanPhamForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,13 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.MaSp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ten = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MoTa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonViTinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GiaTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sanPhamBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.quanlykhoDataSet = new QuanLyKho.quanlykhoDataSet();
             this.sanPhamTableAdapter = new QuanLyKho.quanlykhoDataSetTableAdapters.SanPhamTableAdapter();
@@ -54,75 +47,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.inpMoTa = new System.Windows.Forms.RichTextBox();
             this.inpMaSp = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dataGridViewSp = new System.Windows.Forms.DataGridView();
+            this.Detail = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.sanPhamBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quanlykhoDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSp)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeight = 29;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.MaSp,
-            this.Ten,
-            this.MoTa,
-            this.SoLuong,
-            this.DonViTinh,
-            this.GiaTien});
-            this.dataGridView1.DataSource = this.sanPhamBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(33, 267);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(980, 345);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.loadRowToForm);
-            // 
-            // MaSp
-            // 
-            this.MaSp.DataPropertyName = "MaSp";
-            this.MaSp.HeaderText = "MaSp";
-            this.MaSp.MinimumWidth = 6;
-            this.MaSp.Name = "MaSp";
-            this.MaSp.ReadOnly = true;
-            // 
-            // Ten
-            // 
-            this.Ten.DataPropertyName = "Ten";
-            this.Ten.HeaderText = "Ten";
-            this.Ten.MinimumWidth = 6;
-            this.Ten.Name = "Ten";
-            // 
-            // MoTa
-            // 
-            this.MoTa.DataPropertyName = "MoTa";
-            this.MoTa.HeaderText = "MoTa";
-            this.MoTa.MinimumWidth = 6;
-            this.MoTa.Name = "MoTa";
-            // 
-            // SoLuong
-            // 
-            this.SoLuong.DataPropertyName = "SoLuong";
-            this.SoLuong.HeaderText = "SoLuong";
-            this.SoLuong.MinimumWidth = 6;
-            this.SoLuong.Name = "SoLuong";
-            // 
-            // DonViTinh
-            // 
-            this.DonViTinh.DataPropertyName = "DonViTinh";
-            this.DonViTinh.HeaderText = "DonViTinh";
-            this.DonViTinh.MinimumWidth = 6;
-            this.DonViTinh.Name = "DonViTinh";
-            // 
-            // GiaTien
-            // 
-            this.GiaTien.DataPropertyName = "GiaTien";
-            this.GiaTien.HeaderText = "GiaTien";
-            this.GiaTien.MinimumWidth = 6;
-            this.GiaTien.Name = "GiaTien";
             // 
             // sanPhamBindingSource
             // 
@@ -286,11 +216,38 @@
             this.inpMaSp.TabIndex = 25;
             this.inpMaSp.Visible = false;
             // 
-            // ProductForm
+            // dataGridViewSp
+            // 
+            this.dataGridViewSp.AllowUserToAddRows = false;
+            this.dataGridViewSp.AllowUserToDeleteRows = false;
+            this.dataGridViewSp.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewSp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSp.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Detail});
+            this.dataGridViewSp.Location = new System.Drawing.Point(44, 307);
+            this.dataGridViewSp.Name = "dataGridViewSp";
+            this.dataGridViewSp.ReadOnly = true;
+            this.dataGridViewSp.RowHeadersWidth = 51;
+            this.dataGridViewSp.RowTemplate.Height = 24;
+            this.dataGridViewSp.Size = new System.Drawing.Size(966, 266);
+            this.dataGridViewSp.TabIndex = 26;
+            this.dataGridViewSp.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CellClick);
+            // 
+            // Detail
+            // 
+            this.Detail.HeaderText = "Chi tiết";
+            this.Detail.MinimumWidth = 6;
+            this.Detail.Name = "Detail";
+            this.Detail.ReadOnly = true;
+            this.Detail.Text = "=>";
+            this.Detail.UseColumnTextForButtonValue = true;
+            // 
+            // SanPhamForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1043, 624);
+            this.Controls.Add(this.dataGridViewSp);
             this.Controls.Add(this.inpMaSp);
             this.Controls.Add(this.inpMoTa);
             this.Controls.Add(this.label6);
@@ -306,21 +263,18 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.inpSearch);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dataGridView1);
-            this.Name = "ProductForm";
+            this.Name = "SanPhamForm";
             this.Text = "Quản lý sản phẩm";
             this.Load += new System.EventHandler(this.ProductForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sanPhamBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quanlykhoDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSp)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataGridView1;
         private quanlykhoDataSet quanlykhoDataSet;
         private System.Windows.Forms.BindingSource sanPhamBindingSource;
         private quanlykhoDataSetTableAdapters.SanPhamTableAdapter sanPhamTableAdapter;
@@ -338,12 +292,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.RichTextBox inpMoTa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaSp;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ten;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MoTa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SoLuong;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DonViTinh;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GiaTien;
         private System.Windows.Forms.TextBox inpMaSp;
+        private System.Windows.Forms.DataGridView dataGridViewSp;
+        private System.Windows.Forms.DataGridViewButtonColumn Detail;
     }
 }

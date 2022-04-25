@@ -12,17 +12,13 @@ namespace QuanLyKho.Model
         public string TenSanPham { get; set; }
         public float SoLuongNhap { get; set; }
         public float GiaNhap { get; set; }
-        public int MaNhaCungCap { get; set; }
-        public string TenNhaCungCap { get; set; }
 
-        public SpHoaDon(int masp, string tensp, float soluong, float gianhap, int maNcc, string tenNcc)
+        public SpHoaDon(int masp, string tensp, float soluong, float gianhap)
         {
             MaSp = masp;
             TenSanPham = tensp;
             SoLuongNhap = soluong;
             GiaNhap = gianhap;
-            MaNhaCungCap = maNcc;
-            TenNhaCungCap = tenNcc;
         }
     }
 }

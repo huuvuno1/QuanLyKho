@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace QuanLyKho.Model
 {
-    internal class HoaDon
+    class HoaDon
     {
+        public int MaHD { get; set; }
+        public String NgayLap { get; set; }
+        public float SoLoaiSanPham { get; set; }
+        public string TongTien { get; set; }
+        public int MaNhanVienLap { get; set; }
+        public string TenNhanVienLap { get; set; }
     }
 }

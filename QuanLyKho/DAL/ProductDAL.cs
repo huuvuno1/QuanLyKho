@@ -2,6 +2,7 @@
 using QuanLyKho.Utils;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -14,23 +15,22 @@ namespace QuanLyKho.DAL
     internal class ProductDAL
     {
         static string sqlConn = ConfigurationManager.ConnectionStrings["QuanLyKho.Properties.Settings.quanlykhoConnectionString"].ToString();
-        public static List<Product> search(string keyword)
+        public static BindingList<SanPham> search(string keyword)
         {
             SqlConnection sqlConnection = new SqlConnection(sqlConn);
             sqlConnection.Open();
-            List<Product> products = new List<Product>();
+            BindingList<SanPham> products = new BindingList<SanPham>();
             var cmd = sqlConnection.CreateCommand();
             cmd.CommandText = "select top 20 * from SanPham where ten like @tensp";
             cmd.Parameters.AddWithValue("tensp", "%" + keyword + "%");
             var reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                Product product = new Product();
-                product.Id = int.Parse(reader["Masp"].ToString());
-                product.Name = reader["Ten"].ToString();
-                product.Description = reader["MoTa"].ToString();
-                product.Quantity = float.Parse(reader["SoLuong"].ToString());
-                product.Price = float.Parse(reader["GiaTien"].ToString());
+                SanPham product = new SanPham();
+                product.MaSp = int.Parse(reader["Masp"].ToString());
+                product.Ten = reader["Ten"].ToString();
+                product.MoTa = reader["MoTa"].ToString();
+                product.DonViTinh = reader["DonViTinh"].ToString();
                 products.Add(product);
             }
             reader.Close();
@@ -63,15 +63,39 @@ namespace QuanLyKho.DAL
                 sqlCmd.CommandType = CommandType.Text;
                 sqlCmd.CommandText = "update SanPham set ten=@ten, mota=@mota, donvitinh=@donvi, giatien=@giatien where masp=@masp";
                 sqlCmd.Parameters.AddWithValue("masp", masp);
-                sqlCmd.Parameters.AddWithValue("ten", ten);
-                sqlCmd.Parameters.AddWithValue("mota", mota);
-                sqlCmd.Parameters.AddWithValue("donvi", donvi);
+                sqlCmd.Parameters.Add("ten", SqlDbType.NVarChar).Value = ten;
+                sqlCmd.Parameters.Add("mota", SqlDbType.NVarChar).Value = mota;
+                sqlCmd.Parameters.Add("donvi", SqlDbType.NVarChar).Value = donvi;
                 sqlCmd.Parameters.AddWithValue("giatien", gia);
                 sqlCmd.ExecuteNonQuery();
                 return new Result(true, "OK");
             } 
             catch (Exception e) 
             { 
+                return new Result(false, e.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        public static Result Save(string ten, string donvitinh, string mota)
+        {
+            SqlConnection con = new SqlConnection(sqlConn);
+            try
+            {
+                con.Open();
+                SqlCommand sqlCmd = new SqlCommand();
+                sqlCmd.Connection = con;
+                sqlCmd.CommandType = CommandType.Text;
+                sqlCmd.CommandText = $@"INSERT INTO SanPham(Ten, MoTa, DonViTinh)
+                                        VALUES(N'{ten}', N'{mota}', N'{donvitinh}');";
+                sqlCmd.ExecuteNonQuery();
+                return new Result(true, "OK");
+            }
+            catch (Exception e)
+            {
                 return new Result(false, e.Message);
             }
             finally

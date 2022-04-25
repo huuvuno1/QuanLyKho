@@ -9,7 +9,6 @@ D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.csproj.CoreCompileInputs.ca
 D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.exe
 D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.pdb
 D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.MainForm.resources
-D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.ProductForm.resources
 D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.NccForm.resources
 D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.CuaHangForm.resources
 D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.LoginForm.resources
@@ -40,3 +39,7 @@ D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.Report.ReportCuaHangForm.re
 D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.Report.ReportNhaCungCapForm.resources
 D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.Report.ReportSanPhamForm.resources
 D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.Report.ReportHoaDonNhapForm.resources
+D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.Dialog.FormThemSanPham.resources
+D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.HoaDonNhapKhoForm.resources
+D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.SanPhamForm.resources
+D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.Dialog.FormChiTietSanPham.resources
