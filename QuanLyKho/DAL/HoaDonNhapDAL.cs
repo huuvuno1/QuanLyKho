@@ -17,7 +17,7 @@ namespace QuanLyKho.DAL
     {
         static string sqlConn = ConfigurationManager.ConnectionStrings["QuanLyKho.Properties.Settings.quanlykhoConnectionString"].ToString();
 
-        public static Result CreateHoaDonNhap(string NgayLap, int MaNv, int MaNcc, BindingList<SpHoaDon> list)
+        public static Result CreateHoaDonNhap(string NgayLap, int MaNv, int MaNcc, BindingList<SpHoaDonNhap> list)
         {
             SqlConnection con = new SqlConnection(sqlConn);
             try
@@ -77,5 +77,39 @@ namespace QuanLyKho.DAL
             return list; 
         }
 
+        public static DataTable GetHoaDon(float min_tien, float max_tien)
+        {
+            SqlConnection conn = new SqlConnection(Constant.SQL_CONNECTION_STRING);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand($"SELECT * FROM get_hoa_don_nhap_view WHERE TongTien <= {max_tien} and TongTien >= {min_tien}", conn);
+            SqlDataAdapter sqlDataAdap = new SqlDataAdapter(cmd);
+            DataTable dtRecord = new DataTable();
+            sqlDataAdap.Fill(dtRecord);
+            conn.Close();
+            return dtRecord;
+        }
+
+
+        public static BindingList<SpHoaDonNhap> GetProductsInBill(int mahd)
+        {
+            BindingList<SpHoaDonNhap> list = new BindingList<SpHoaDonNhap>();
+            SqlConnection conn = new SqlConnection(Constant.SQL_CONNECTION_STRING);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("get_sp_in_hoa_don_nhap", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("ma_hd", mahd);
+            var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                SpHoaDonNhap sp = new SpHoaDonNhap();
+                sp.MaSp = int.Parse(reader["MaSp"].ToString());
+                sp.GiaNhap = int.Parse(reader["GiaNhap"].ToString());
+                sp.SoLuongNhap = int.Parse(reader["SoLuong"].ToString());
+                sp.TenSanPham = reader["Ten"].ToString();
+                list.Add(sp);
+            }
+            conn.Close();
+            return list;
+        }
     }
 }

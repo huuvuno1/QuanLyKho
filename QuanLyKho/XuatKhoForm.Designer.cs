@@ -48,6 +48,10 @@
             this.errorProviderSoLuong = new System.Windows.Forms.ErrorProvider(this.components);
             this.inpSoLuong = new System.Windows.Forms.TextBox();
             this.comboBoxGiaXuat = new System.Windows.Forms.ComboBox();
+            this.labelTenNv = new System.Windows.Forms.Label();
+            this.inpTenNv = new System.Windows.Forms.TextBox();
+            this.labelMaNv = new System.Windows.Forms.Label();
+            this.inpMaNv = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderGiaNhap)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listSanPham)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderSoLuong)).BeginInit();
@@ -74,9 +78,9 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(23, 80);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(99, 29);
+            this.label5.Size = new System.Drawing.Size(98, 29);
             this.label5.TabIndex = 30;
-            this.label5.Text = "Giá xuất";
+            this.label5.Text = "Loại giá";
             // 
             // button5
             // 
@@ -90,6 +94,7 @@
             this.button5.TabIndex = 28;
             this.button5.Text = "Hoàn thành";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // label4
             // 
@@ -122,6 +127,7 @@
             this.btnAddProductToBill.TabIndex = 24;
             this.btnAddProductToBill.Text = "Thêm vào hóa đơn";
             this.btnAddProductToBill.UseVisualStyleBackColor = true;
+            this.btnAddProductToBill.Click += new System.EventHandler(this.btnAddProductToBill_Click);
             // 
             // Remove
             // 
@@ -134,6 +140,8 @@
             // 
             // listSanPham
             // 
+            this.listSanPham.AllowUserToAddRows = false;
+            this.listSanPham.AllowUserToDeleteRows = false;
             this.listSanPham.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.listSanPham.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.listSanPham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -141,6 +149,7 @@
             this.Remove});
             this.listSanPham.Location = new System.Drawing.Point(28, 354);
             this.listSanPham.Name = "listSanPham";
+            this.listSanPham.ReadOnly = true;
             this.listSanPham.RowHeadersWidth = 51;
             this.listSanPham.RowTemplate.Height = 24;
             this.listSanPham.Size = new System.Drawing.Size(991, 252);
@@ -209,6 +218,7 @@
             this.comboxProduct.Name = "comboxProduct";
             this.comboxProduct.Size = new System.Drawing.Size(395, 37);
             this.comboxProduct.TabIndex = 18;
+            this.comboxProduct.SelectedIndexChanged += new System.EventHandler(this.comboxProduct_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -220,6 +230,7 @@
             this.button1.TabIndex = 17;
             this.button1.Text = "Tìm kiếm";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // errorProviderSoLuong
             // 
@@ -232,9 +243,11 @@
             this.inpSoLuong.Name = "inpSoLuong";
             this.inpSoLuong.Size = new System.Drawing.Size(301, 34);
             this.inpSoLuong.TabIndex = 16;
+            this.inpSoLuong.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateSoLuong);
             // 
             // comboBoxGiaXuat
             // 
+            this.comboBoxGiaXuat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxGiaXuat.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxGiaXuat.FormattingEnabled = true;
             this.comboBoxGiaXuat.Items.AddRange(new object[] {
@@ -247,12 +260,59 @@
             this.comboBoxGiaXuat.Name = "comboBoxGiaXuat";
             this.comboBoxGiaXuat.Size = new System.Drawing.Size(395, 37);
             this.comboBoxGiaXuat.TabIndex = 32;
+            this.comboBoxGiaXuat.SelectedIndexChanged += new System.EventHandler(this.comboBoxGiaXuat_SelectedIndexChanged);
+            // 
+            // labelTenNv
+            // 
+            this.labelTenNv.AutoSize = true;
+            this.labelTenNv.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTenNv.Location = new System.Drawing.Point(626, 131);
+            this.labelTenNv.Name = "labelTenNv";
+            this.labelTenNv.Size = new System.Drawing.Size(86, 29);
+            this.labelTenNv.TabIndex = 36;
+            this.labelTenNv.Text = "Tên nv";
+            this.labelTenNv.Visible = false;
+            // 
+            // inpTenNv
+            // 
+            this.inpTenNv.Enabled = false;
+            this.inpTenNv.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inpTenNv.Location = new System.Drawing.Point(718, 128);
+            this.inpTenNv.Name = "inpTenNv";
+            this.inpTenNv.Size = new System.Drawing.Size(301, 34);
+            this.inpTenNv.TabIndex = 35;
+            this.inpTenNv.WordWrap = false;
+            // 
+            // labelMaNv
+            // 
+            this.labelMaNv.AutoSize = true;
+            this.labelMaNv.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMaNv.Location = new System.Drawing.Point(626, 80);
+            this.labelMaNv.Name = "labelMaNv";
+            this.labelMaNv.Size = new System.Drawing.Size(115, 29);
+            this.labelMaNv.TabIndex = 34;
+            this.labelMaNv.Text = "Mã nv lập";
+            this.labelMaNv.Visible = false;
+            // 
+            // inpMaNv
+            // 
+            this.inpMaNv.Enabled = false;
+            this.inpMaNv.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inpMaNv.Location = new System.Drawing.Point(756, 77);
+            this.inpMaNv.Name = "inpMaNv";
+            this.inpMaNv.Size = new System.Drawing.Size(263, 34);
+            this.inpMaNv.TabIndex = 33;
+            this.inpMaNv.WordWrap = false;
             // 
             // XuatKhoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1043, 624);
+            this.Controls.Add(this.labelTenNv);
+            this.Controls.Add(this.inpTenNv);
+            this.Controls.Add(this.labelMaNv);
+            this.Controls.Add(this.inpMaNv);
             this.Controls.Add(this.comboBoxGiaXuat);
             this.Controls.Add(this.btnSearchNcc);
             this.Controls.Add(this.label5);
@@ -269,6 +329,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.inpSoLuong);
             this.Name = "XuatKhoForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Xuất kho";
             this.Load += new System.EventHandler(this.XuatKhoForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderGiaNhap)).EndInit();
@@ -300,5 +361,9 @@
         private System.Windows.Forms.TextBox inpSoLuong;
         private quanlykhoDataSetTableAdapters.SanPhamTableAdapter sanPhamTableAdapter1;
         private System.Windows.Forms.ErrorProvider errorProviderSoLuong;
+        private System.Windows.Forms.Label labelTenNv;
+        private System.Windows.Forms.TextBox inpTenNv;
+        private System.Windows.Forms.Label labelMaNv;
+        private System.Windows.Forms.TextBox inpMaNv;
     }
 }

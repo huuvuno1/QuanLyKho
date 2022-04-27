@@ -50,9 +50,6 @@
             this.inpGioiTinh = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.nhanVienBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.nhanVienTableAdapter = new QuanLyKho.quanlykhoDataSetTableAdapters.NhanVienTableAdapter();
-            this.nhanVienTableAdapter1 = new QuanLyKho.quanlykhoDataSetTableAdapters.NhanVienTableAdapter();
             this.MaNv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ten = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,6 +57,12 @@
             this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GioiTinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nhanVienBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.nhanVienTableAdapter = new QuanLyKho.quanlykhoDataSetTableAdapters.NhanVienTableAdapter();
+            this.nhanVienTableAdapter1 = new QuanLyKho.quanlykhoDataSetTableAdapters.NhanVienTableAdapter();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.inpUsername = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.quanlykhoDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quanlykhoDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quanlykhoDataSetBindingSource)).BeginInit();
@@ -95,6 +98,7 @@
             this.btnEdit.TabIndex = 26;
             this.btnEdit.Text = "Sửa";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnAdd
             // 
@@ -254,26 +258,14 @@
             this.GioiTinh,
             this.Username});
             this.dataGridView1.DataSource = this.nhanVienBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(17, 193);
+            this.dataGridView1.Location = new System.Drawing.Point(17, 248);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1008, 342);
+            this.dataGridView1.Size = new System.Drawing.Size(1008, 287);
             this.dataGridView1.TabIndex = 30;
+            this.dataGridView1.CellBorderStyleChanged += new System.EventHandler(this.dataGridView1_CellBorderStyleChanged);
             this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.bindDataToForm);
-            // 
-            // nhanVienBindingSource
-            // 
-            this.nhanVienBindingSource.DataMember = "NhanVien";
-            this.nhanVienBindingSource.DataSource = this.quanlykhoDataSetBindingSource;
-            // 
-            // nhanVienTableAdapter
-            // 
-            this.nhanVienTableAdapter.ClearBeforeFill = true;
-            // 
-            // nhanVienTableAdapter1
-            // 
-            this.nhanVienTableAdapter1.ClearBeforeFill = true;
             // 
             // MaNv
             // 
@@ -325,11 +317,58 @@
             this.Username.MinimumWidth = 6;
             this.Username.Name = "Username";
             // 
+            // nhanVienBindingSource
+            // 
+            this.nhanVienBindingSource.DataMember = "NhanVien";
+            this.nhanVienBindingSource.DataSource = this.quanlykhoDataSetBindingSource;
+            // 
+            // nhanVienTableAdapter
+            // 
+            this.nhanVienTableAdapter.ClearBeforeFill = true;
+            // 
+            // nhanVienTableAdapter1
+            // 
+            this.nhanVienTableAdapter1.ClearBeforeFill = true;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Enabled = false;
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(764, 565);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(142, 47);
+            this.btnCancel.TabIndex = 31;
+            this.btnCancel.Text = "Hủy";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // inpUsername
+            // 
+            this.inpUsername.Enabled = false;
+            this.inpUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inpUsername.Location = new System.Drawing.Point(200, 169);
+            this.inpUsername.Name = "inpUsername";
+            this.inpUsername.Size = new System.Drawing.Size(312, 30);
+            this.inpUsername.TabIndex = 33;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(12, 174);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(102, 25);
+            this.label7.TabIndex = 32;
+            this.label7.Text = "Username";
+            // 
             // NhanVienForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1043, 624);
+            this.Controls.Add(this.inpUsername);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.inpGioiTinh);
             this.Controls.Add(this.label6);
@@ -393,5 +432,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
         private System.Windows.Forms.DataGridViewTextBoxColumn GioiTinh;
         private System.Windows.Forms.DataGridViewTextBoxColumn Username;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.TextBox inpUsername;
+        private System.Windows.Forms.Label label7;
     }
 }

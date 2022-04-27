@@ -8,8 +8,10 @@ namespace QuanLyKho.Model
 {
     class ChiTietSp
     {
-        public string MaChiTiet { get; set; }
+        public int MaChiTiet { get; set; }
         public float GiaTien { get; set; }
         public float SoLuong { get; set; }
+
+        public string Display { get; set; }
     }
 }

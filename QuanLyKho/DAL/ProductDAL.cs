@@ -37,6 +37,35 @@ namespace QuanLyKho.DAL
             return products;
         }
 
+
+        public static BindingList<SanPhamChiTiet> SearchInStock(string keyword)
+        {
+            SqlConnection sqlConnection = new SqlConnection(Constant.SQL_CONNECTION_STRING);
+            sqlConnection.Open();
+            BindingList<SanPhamChiTiet> products = new BindingList<SanPhamChiTiet>();
+            var cmd = sqlConnection.CreateCommand();
+            cmd.CommandText = @"SELECT * from SanPham sp 
+                                inner join ChiTietSanPham ctsp on sp.MaSp = ctsp.MaSp
+                                WHERE ten like @tensp";
+            cmd.Parameters.AddWithValue("tensp", "%" + keyword + "%");
+            var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                SanPhamChiTiet product = new SanPhamChiTiet();
+                product.MaSp = int.Parse(reader["Masp"].ToString());
+                product.Ten = reader["Ten"].ToString();
+                product.MoTa = reader["MoTa"].ToString();
+                product.DonViTinh = reader["DonViTinh"].ToString();
+                product.Gia = float.Parse(reader["GiaTien"].ToString());
+                product.SoLuong = float.Parse(reader["SoLuongTrongKho"].ToString());
+                product.Display = $"Mã: {product.MaSp} - Tên: {product.Ten} - Giá: {product.Gia} - SL còn trong kho: {product.SoLuong}";
+                products.Add(product);
+            }
+            reader.Close();
+            return products;
+        }
+
+
         public static DataTable SearchProduct(string keyword)
         {
             SqlConnection con = new SqlConnection(sqlConn);
@@ -52,7 +81,7 @@ namespace QuanLyKho.DAL
             return dtRecord;
         }
 
-        public static Result UpdateProduct(int masp, string ten, string mota, string donvi, float gia)
+        public static Result UpdateProduct(int masp, string ten, string mota, string donvi)
         {
             SqlConnection con = new SqlConnection(sqlConn);
             try
@@ -61,12 +90,11 @@ namespace QuanLyKho.DAL
                 SqlCommand sqlCmd = new SqlCommand();
                 sqlCmd.Connection = con;
                 sqlCmd.CommandType = CommandType.Text;
-                sqlCmd.CommandText = "update SanPham set ten=@ten, mota=@mota, donvitinh=@donvi, giatien=@giatien where masp=@masp";
+                sqlCmd.CommandText = "update SanPham set ten=@ten, mota=@mota, donvitinh=@donvi where masp=@masp";
                 sqlCmd.Parameters.AddWithValue("masp", masp);
                 sqlCmd.Parameters.Add("ten", SqlDbType.NVarChar).Value = ten;
                 sqlCmd.Parameters.Add("mota", SqlDbType.NVarChar).Value = mota;
                 sqlCmd.Parameters.Add("donvi", SqlDbType.NVarChar).Value = donvi;
-                sqlCmd.Parameters.AddWithValue("giatien", gia);
                 sqlCmd.ExecuteNonQuery();
                 return new Result(true, "OK");
             } 

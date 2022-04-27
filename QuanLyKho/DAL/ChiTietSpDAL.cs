@@ -17,16 +17,17 @@ namespace QuanLyKho.DAL
             BindingList<ChiTietSp> list = new BindingList<ChiTietSp>();
             SqlConnection conn = new SqlConnection(Constant.SQL_CONNECTION_STRING);
             conn.Open();
-            string sql = $@"SELECT MaChiTiet, GiaTien, MaSp, SoLuong
+            string sql = $@"SELECT MaChiTietSp, GiaTien, MaSp, SoLuongTrongKho
                             FROM ChiTietSanPham WHERE MaSp = {MaSp}";
             SqlCommand cmd = new SqlCommand(sql, conn);
             var reader = cmd.ExecuteReader();
             while (reader.Read())
             {
                 ChiTietSp ct = new ChiTietSp();
-                ct.MaChiTiet = reader["MaChiTiet"].ToString();
-                ct.SoLuong = float.Parse(reader["SoLuong"].ToString());
+                ct.MaChiTiet = int.Parse(reader["MaChiTietSp"].ToString());
+                ct.SoLuong = float.Parse(reader["SoLuongTrongKho"].ToString());
                 ct.GiaTien = float.Parse(reader["GiaTien"].ToString());
+                ct.Display = $"Giá: {ct.GiaTien.ToString("N0")} - Tồn kho: {ct.SoLuong}";
                 list.Add(ct);
             }
             conn.Close();

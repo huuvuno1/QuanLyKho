@@ -30,6 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.MaCh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ten = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cuaHangBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.quanlykhoDataSet = new QuanLyKho.quanlykhoDataSet();
             this.cuaHangTableAdapter = new QuanLyKho.quanlykhoDataSetTableAdapters.CuaHangTableAdapter();
@@ -45,13 +50,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnThem = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnXoa = new System.Windows.Forms.Button();
             this.labelMa = new System.Windows.Forms.Label();
-            this.MaCh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ten = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnHuy = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cuaHangBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quanlykhoDataSet)).BeginInit();
@@ -76,6 +77,42 @@
             this.dataGridView1.Size = new System.Drawing.Size(966, 286);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.loadDataToForm);
+            // 
+            // MaCh
+            // 
+            this.MaCh.DataPropertyName = "MaCh";
+            this.MaCh.HeaderText = "MaCh";
+            this.MaCh.MinimumWidth = 6;
+            this.MaCh.Name = "MaCh";
+            this.MaCh.ReadOnly = true;
+            // 
+            // Ten
+            // 
+            this.Ten.DataPropertyName = "Ten";
+            this.Ten.HeaderText = "Ten";
+            this.Ten.MinimumWidth = 6;
+            this.Ten.Name = "Ten";
+            // 
+            // DiaChi
+            // 
+            this.DiaChi.DataPropertyName = "DiaChi";
+            this.DiaChi.HeaderText = "DiaChi";
+            this.DiaChi.MinimumWidth = 6;
+            this.DiaChi.Name = "DiaChi";
+            // 
+            // Email
+            // 
+            this.Email.DataPropertyName = "Email";
+            this.Email.HeaderText = "Email";
+            this.Email.MinimumWidth = 6;
+            this.Email.Name = "Email";
+            // 
+            // SDT
+            // 
+            this.SDT.DataPropertyName = "SDT";
+            this.SDT.HeaderText = "SDT";
+            this.SDT.MinimumWidth = 6;
+            this.SDT.Name = "SDT";
             // 
             // cuaHangBindingSource
             // 
@@ -199,6 +236,7 @@
             // 
             // btnSua
             // 
+            this.btnSua.Enabled = false;
             this.btnSua.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSua.Location = new System.Drawing.Point(277, 213);
             this.btnSua.Name = "btnSua";
@@ -208,15 +246,17 @@
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // btnXoa
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(529, 213);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(185, 57);
-            this.button3.TabIndex = 44;
-            this.button3.Text = "Xóa";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnXoa.Enabled = false;
+            this.btnXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXoa.Location = new System.Drawing.Point(529, 213);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(185, 57);
+            this.btnXoa.TabIndex = 44;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // labelMa
             // 
@@ -224,54 +264,31 @@
             this.labelMa.ForeColor = System.Drawing.Color.Red;
             this.labelMa.Location = new System.Drawing.Point(325, 62);
             this.labelMa.Name = "labelMa";
-            this.labelMa.Size = new System.Drawing.Size(191, 16);
+            this.labelMa.Size = new System.Drawing.Size(206, 17);
             this.labelMa.TabIndex = 45;
             this.labelMa.Text = "*Mã cửa hàng được tạo tự động";
             this.labelMa.Visible = false;
             // 
-            // MaCh
+            // btnHuy
             // 
-            this.MaCh.DataPropertyName = "MaCh";
-            this.MaCh.HeaderText = "MaCh";
-            this.MaCh.MinimumWidth = 6;
-            this.MaCh.Name = "MaCh";
-            this.MaCh.ReadOnly = true;
-            // 
-            // Ten
-            // 
-            this.Ten.DataPropertyName = "Ten";
-            this.Ten.HeaderText = "Ten";
-            this.Ten.MinimumWidth = 6;
-            this.Ten.Name = "Ten";
-            // 
-            // DiaChi
-            // 
-            this.DiaChi.DataPropertyName = "DiaChi";
-            this.DiaChi.HeaderText = "DiaChi";
-            this.DiaChi.MinimumWidth = 6;
-            this.DiaChi.Name = "DiaChi";
-            // 
-            // Email
-            // 
-            this.Email.DataPropertyName = "Email";
-            this.Email.HeaderText = "Email";
-            this.Email.MinimumWidth = 6;
-            this.Email.Name = "Email";
-            // 
-            // SDT
-            // 
-            this.SDT.DataPropertyName = "SDT";
-            this.SDT.HeaderText = "SDT";
-            this.SDT.MinimumWidth = 6;
-            this.SDT.Name = "SDT";
+            this.btnHuy.Enabled = false;
+            this.btnHuy.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHuy.Location = new System.Drawing.Point(759, 213);
+            this.btnHuy.Name = "btnHuy";
+            this.btnHuy.Size = new System.Drawing.Size(185, 57);
+            this.btnHuy.TabIndex = 46;
+            this.btnHuy.Text = "Hủy";
+            this.btnHuy.UseVisualStyleBackColor = true;
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // CuaHangForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1043, 624);
+            this.Controls.Add(this.btnHuy);
             this.Controls.Add(this.labelMa);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.inpEmail);
@@ -314,12 +331,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Button btnSua;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Label labelMa;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaCh;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ten;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn SDT;
+        private System.Windows.Forms.Button btnHuy;
     }
 }

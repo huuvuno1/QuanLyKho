@@ -23,7 +23,7 @@ namespace QuanLyKho
 
         private void ProductForm_Load(object sender, EventArgs e)
         {
-            btnSave.Enabled = inpTenSp.Enabled = inpGiaSp.Enabled = inpMoTa.Enabled = inpDonVi.Enabled = inpSL.Enabled = false;
+            btnSave.Enabled = inpTenSp.Enabled  = inpMoTa.Enabled = inpDonVi.Enabled = inpMaSp.Enabled = false;
         }
 
         private void inpName_TextChanged(object sender, EventArgs e)
@@ -39,7 +39,7 @@ namespace QuanLyKho
         private void btnAdd_Click(object sender, EventArgs e)
         {
             string text = inpSearch.Text;
-            sanPhamBindingSource.DataSource = ProductDAL.SearchProduct(text);
+            dataGridViewSp.DataSource = ProductDAL.search(text);
             //this.sanPhamTableAdapter.Fill(this.quanlykhoDataSet.SanPham);
         }
 
@@ -67,18 +67,16 @@ namespace QuanLyKho
         {
             if (e.RowIndex < 0 || e.RowIndex >= dataGridViewSp.Rows.Count - 1)
             {
-                inpTenSp.Text = inpGiaSp.Text = inpMoTa.Text = inpDonVi.Text = inpSL.Text = "";
-                btnSave.Enabled = inpTenSp.Enabled = inpGiaSp.Enabled = inpMoTa.Enabled = inpDonVi.Enabled = inpSL.Enabled = false;
+                inpTenSp.Text = inpMoTa.Text = inpDonVi.Text = "";
+                btnSave.Enabled = inpTenSp.Enabled = inpMoTa.Enabled = inpDonVi.Enabled = false;
                 return;
             }
             DataGridViewRow row = dataGridViewSp.Rows[e.RowIndex];
             inpMaSp.Text = row.Cells["MaSp"].Value.ToString();
             inpTenSp.Text = row.Cells["Ten"].Value.ToString();
-            inpGiaSp.Text = row.Cells["GiaTien"].Value.ToString();
             inpMoTa.Text = row.Cells["MoTa"].Value.ToString();
             inpDonVi.Text = row.Cells["DonViTinh"].Value.ToString();
-            inpSL.Text = row.Cells["SoLuong"].Value.ToString();
-            btnSave.Enabled = inpTenSp.Enabled = inpGiaSp.Enabled = inpMoTa.Enabled = inpDonVi.Enabled = true;
+            btnSave.Enabled = inpTenSp.Enabled = inpMoTa.Enabled = inpDonVi.Enabled = true;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -90,20 +88,16 @@ namespace QuanLyKho
             {
                 int masp = int.Parse(inpMaSp.Text);
                 string ten = inpTenSp.Text;
-                float gia = 0;
-                float.TryParse(inpGiaSp.Text, out gia);
                 string donvi = inpDonVi.Text;
                 string mota = inpMoTa.Text;
-                float soluong = 0;
-                float.TryParse(inpSL.Text, out soluong);
-                var result = ProductDAL.UpdateProduct(masp, ten, mota, donvi, gia);
+                var result = ProductDAL.UpdateProduct(masp, ten, mota, donvi);
                 if (!result.Status)
                 {
                     MessageBox.Show("Cập nhật không thành công: " + result.Message, "Có lỗi xảy ra!!!");
                 }
 
                 string text = inpSearch.Text;
-                sanPhamBindingSource.DataSource = ProductDAL.SearchProduct(text);
+                dataGridViewSp.DataSource = ProductDAL.search("");
             }
         }
 
@@ -111,11 +105,26 @@ namespace QuanLyKho
         {
             if (e.RowIndex < 0)
                 return;
+            BindingList<SanPham> products = (BindingList<SanPham>)dataGridViewSp.DataSource;
             if (dataGridViewSp.Columns[e.ColumnIndex].Name == "Detail")
             {
-                BindingList<SanPham> products = (BindingList<SanPham>)dataGridViewSp.DataSource;
                 new FormChiTietSanPham(products[e.RowIndex]).ShowDialog(this);
             }
+            else
+            {
+                SanPham product = products[e.RowIndex];
+                inpDonVi.Text = product.DonViTinh;
+                inpTenSp.Text = product.Ten;
+                inpMaSp.Text = product.MaSp.ToString();
+                inpMoTa.Text = product.MoTa;
+                inpTenSp.Enabled = inpMoTa.Enabled = inpDonVi.Enabled = true;
+                btnSave.Enabled = true;
+            }
+        }
+
+        private void inpMaSp_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

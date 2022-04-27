@@ -12,29 +12,26 @@ using System.Windows.Forms;
 
 namespace QuanLyKho
 {
-    internal partial class HoaDonNhapKhoForm : Form
+    public partial class HoaDonXuatKhoForm : Form
     {
-        
-
-        public HoaDonNhapKhoForm()
+        public HoaDonXuatKhoForm()
         {
             InitializeComponent();
         }
 
-        private void HoaDonNhapKhoForm_Load(object sender, EventArgs e)
+        private void HoaDonXuatKhoForm_Load(object sender, EventArgs e)
         {
-            BindingList<HoaDonNhap> list = HoaDonNhapDAL.GetHoaDon();
-            dataGridView.DataSource = list;
+            dataGridView.DataSource = HoaDonXuatDAL.GetHoaDon();
         }
 
-        private void ShowDetailHoaDonNhap(object sender, DataGridViewCellEventArgs e)
+        private void ShowDetailHoaDonXuat(object sender, DataGridViewCellEventArgs e)
         {
-            BindingList<HoaDonNhap> list = (BindingList<HoaDonNhap>)dataGridView.DataSource;
+            BindingList<HoaDonXuat> list = (BindingList<HoaDonXuat>)dataGridView.DataSource;
             if (e.RowIndex < 0 || e.RowIndex > list.Count - 1)
                 return;
             if (dataGridView.Columns[e.ColumnIndex].Name == "Detail")
             {
-                new NhapKhoForm(list[e.RowIndex]).ShowDialog(this);
+                new XuatKhoForm(list[e.RowIndex]).ShowDialog(this);
             }
         }
     }

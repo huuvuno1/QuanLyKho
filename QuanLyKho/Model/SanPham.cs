@@ -22,4 +22,11 @@ namespace QuanLyKho.Model
             DonViTinh = donvitinh;
         }
     }
+
+    public class SanPhamChiTiet : SanPham
+    {
+        public float Gia { get; set; }
+        public float SoLuong { get; set; }
+        public string Display { get; set; }
+    }
 }

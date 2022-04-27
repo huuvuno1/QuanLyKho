@@ -59,6 +59,7 @@ namespace QuanLyKho
             this.dataGridView.RowTemplate.Height = 24;
             this.dataGridView.Size = new System.Drawing.Size(997, 304);
             this.dataGridView.TabIndex = 0;
+            this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ShowDetailHoaDonNhap);
             // 
             // Detail
             // 
@@ -188,6 +189,7 @@ namespace QuanLyKho
             this.Controls.Add(this.dateTimePicker);
             this.Controls.Add(this.dataGridView);
             this.Name = "HoaDonNhapKhoForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hóa đơn nhập kho";
             this.Load += new System.EventHandler(this.HoaDonNhapKhoForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();

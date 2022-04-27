@@ -38,17 +38,14 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.inpTenSp = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.inpGiaSp = new System.Windows.Forms.TextBox();
             this.inpDonVi = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.inpSL = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.inpMoTa = new System.Windows.Forms.RichTextBox();
             this.inpMaSp = new System.Windows.Forms.TextBox();
             this.dataGridViewSp = new System.Windows.Forms.DataGridView();
             this.Detail = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.sanPhamBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quanlykhoDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSp)).BeginInit();
@@ -116,7 +113,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(39, 36);
+            this.label1.Location = new System.Drawing.Point(39, 104);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 25);
             this.label1.TabIndex = 14;
@@ -125,28 +122,10 @@
             // inpTenSp
             // 
             this.inpTenSp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inpTenSp.Location = new System.Drawing.Point(144, 33);
+            this.inpTenSp.Location = new System.Drawing.Point(135, 101);
             this.inpTenSp.Name = "inpTenSp";
             this.inpTenSp.Size = new System.Drawing.Size(245, 30);
             this.inpTenSp.TabIndex = 15;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(39, 90);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 25);
-            this.label3.TabIndex = 16;
-            this.label3.Text = "Giá tiền";
-            // 
-            // inpGiaSp
-            // 
-            this.inpGiaSp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inpGiaSp.Location = new System.Drawing.Point(144, 85);
-            this.inpGiaSp.Name = "inpGiaSp";
-            this.inpGiaSp.Size = new System.Drawing.Size(208, 30);
-            this.inpGiaSp.TabIndex = 17;
             // 
             // inpDonVi
             // 
@@ -167,26 +146,6 @@
             this.label4.TabIndex = 20;
             this.label4.Text = "Đơn vị tính";
             this.label4.Click += new System.EventHandler(this.label4_Click);
-            // 
-            // inpSL
-            // 
-            this.inpSL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inpSL.Location = new System.Drawing.Point(144, 134);
-            this.inpSL.Name = "inpSL";
-            this.inpSL.Size = new System.Drawing.Size(167, 30);
-            this.inpSL.TabIndex = 19;
-            this.inpSL.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(39, 137);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(90, 25);
-            this.label5.TabIndex = 18;
-            this.label5.Text = "Số lượng";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
             // 
@@ -210,11 +169,11 @@
             // inpMaSp
             // 
             this.inpMaSp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inpMaSp.Location = new System.Drawing.Point(357, 132);
+            this.inpMaSp.Location = new System.Drawing.Point(176, 36);
             this.inpMaSp.Name = "inpMaSp";
             this.inpMaSp.Size = new System.Drawing.Size(167, 30);
             this.inpMaSp.TabIndex = 25;
-            this.inpMaSp.Visible = false;
+            this.inpMaSp.TextChanged += new System.EventHandler(this.inpMaSp_TextChanged);
             // 
             // dataGridViewSp
             // 
@@ -231,7 +190,7 @@
             this.dataGridViewSp.RowTemplate.Height = 24;
             this.dataGridViewSp.Size = new System.Drawing.Size(966, 266);
             this.dataGridViewSp.TabIndex = 26;
-            this.dataGridViewSp.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CellClick);
+            this.dataGridViewSp.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CellClick);
             // 
             // Detail
             // 
@@ -242,21 +201,28 @@
             this.Detail.Text = "=>";
             this.Detail.UseColumnTextForButtonValue = true;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(39, 39);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(131, 25);
+            this.label3.TabIndex = 27;
+            this.label3.Text = "Mã sản phẩm";
+            // 
             // SanPhamForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1043, 624);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.dataGridViewSp);
             this.Controls.Add(this.inpMaSp);
             this.Controls.Add(this.inpMoTa);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.inpDonVi);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.inpSL);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.inpGiaSp);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.inpTenSp);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSave);
@@ -284,16 +250,13 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox inpTenSp;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox inpGiaSp;
         private System.Windows.Forms.TextBox inpDonVi;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox inpSL;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.RichTextBox inpMoTa;
         private System.Windows.Forms.TextBox inpMaSp;
         private System.Windows.Forms.DataGridView dataGridViewSp;
         private System.Windows.Forms.DataGridViewButtonColumn Detail;
+        private System.Windows.Forms.Label label3;
     }
 }

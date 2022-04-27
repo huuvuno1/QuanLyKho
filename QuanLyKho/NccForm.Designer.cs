@@ -54,6 +54,7 @@
             this.nhanVienTableAdapter1 = new QuanLyKho.quanlykhoDataSetTableAdapters.NhanVienTableAdapter();
             this.nhaCungCapBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nhaCungCapTableAdapter1 = new QuanLyKho.quanlykhoDataSetTableAdapters.NhaCungCapTableAdapter();
+            this.btnCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Ncc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quanlykhoDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quanlykhoDataSet)).BeginInit();
@@ -78,6 +79,7 @@
             this.dataGridView_Ncc.RowTemplate.Height = 24;
             this.dataGridView_Ncc.Size = new System.Drawing.Size(945, 324);
             this.dataGridView_Ncc.TabIndex = 0;
+            this.dataGridView_Ncc.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.selectRow);
             this.dataGridView_Ncc.SelectionChanged += new System.EventHandler(this.selectRow);
             // 
             // MaNcc
@@ -226,7 +228,7 @@
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(241, 581);
+            this.btnAdd.Location = new System.Drawing.Point(167, 577);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(142, 47);
             this.btnAdd.TabIndex = 11;
@@ -238,7 +240,7 @@
             // 
             this.btnEdit.Enabled = false;
             this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(429, 581);
+            this.btnEdit.Location = new System.Drawing.Point(355, 577);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(142, 47);
             this.btnEdit.TabIndex = 12;
@@ -250,7 +252,7 @@
             // 
             this.btnDelete.Enabled = false;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(619, 581);
+            this.btnDelete.Location = new System.Drawing.Point(545, 577);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(142, 47);
             this.btnDelete.TabIndex = 13;
@@ -276,11 +278,24 @@
             // 
             this.nhaCungCapTableAdapter1.ClearBeforeFill = true;
             // 
+            // btnCancel
+            // 
+            this.btnCancel.Enabled = false;
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(735, 577);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(142, 47);
+            this.btnCancel.TabIndex = 14;
+            this.btnCancel.Text = "Hủy";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // NccForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1034, 653);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnAdd);
@@ -335,5 +350,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SDT;
         private System.Windows.Forms.BindingSource nhaCungCapBindingSource;
         private quanlykhoDataSetTableAdapters.NhaCungCapTableAdapter nhaCungCapTableAdapter1;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

@@ -49,6 +49,10 @@
             this.btnSearchNcc = new System.Windows.Forms.Button();
             this.errorProviderSoLuong = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderGiaNhap = new System.Windows.Forms.ErrorProvider(this.components);
+            this.labelTenNv = new System.Windows.Forms.Label();
+            this.inpTenNv = new System.Windows.Forms.TextBox();
+            this.labelMaNv = new System.Windows.Forms.Label();
+            this.inpMaNv = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.listSanPham)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderSoLuong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderGiaNhap)).BeginInit();
@@ -144,6 +148,8 @@
             // 
             // listSanPham
             // 
+            this.listSanPham.AllowUserToAddRows = false;
+            this.listSanPham.AllowUserToDeleteRows = false;
             this.listSanPham.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.listSanPham.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.listSanPham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -151,6 +157,7 @@
             this.Remove});
             this.listSanPham.Location = new System.Drawing.Point(25, 360);
             this.listSanPham.Name = "listSanPham";
+            this.listSanPham.ReadOnly = true;
             this.listSanPham.RowHeadersWidth = 51;
             this.listSanPham.RowTemplate.Height = 24;
             this.listSanPham.Size = new System.Drawing.Size(991, 252);
@@ -265,12 +272,59 @@
             // 
             this.errorProviderGiaNhap.ContainerControl = this;
             // 
+            // labelTenNv
+            // 
+            this.labelTenNv.AutoSize = true;
+            this.labelTenNv.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTenNv.Location = new System.Drawing.Point(623, 136);
+            this.labelTenNv.Name = "labelTenNv";
+            this.labelTenNv.Size = new System.Drawing.Size(86, 29);
+            this.labelTenNv.TabIndex = 19;
+            this.labelTenNv.Text = "Tên nv";
+            this.labelTenNv.Visible = false;
+            // 
+            // inpTenNv
+            // 
+            this.inpTenNv.Enabled = false;
+            this.inpTenNv.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inpTenNv.Location = new System.Drawing.Point(715, 133);
+            this.inpTenNv.Name = "inpTenNv";
+            this.inpTenNv.Size = new System.Drawing.Size(301, 34);
+            this.inpTenNv.TabIndex = 18;
+            this.inpTenNv.WordWrap = false;
+            this.inpTenNv.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // labelMaNv
+            // 
+            this.labelMaNv.AutoSize = true;
+            this.labelMaNv.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMaNv.Location = new System.Drawing.Point(623, 85);
+            this.labelMaNv.Name = "labelMaNv";
+            this.labelMaNv.Size = new System.Drawing.Size(115, 29);
+            this.labelMaNv.TabIndex = 17;
+            this.labelMaNv.Text = "Mã nv lập";
+            this.labelMaNv.Visible = false;
+            // 
+            // inpMaNv
+            // 
+            this.inpMaNv.Enabled = false;
+            this.inpMaNv.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inpMaNv.Location = new System.Drawing.Point(753, 82);
+            this.inpMaNv.Name = "inpMaNv";
+            this.inpMaNv.Size = new System.Drawing.Size(263, 34);
+            this.inpMaNv.TabIndex = 16;
+            this.inpMaNv.WordWrap = false;
+            // 
             // NhapKhoForm
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1043, 624);
+            this.Controls.Add(this.labelTenNv);
+            this.Controls.Add(this.inpTenNv);
+            this.Controls.Add(this.labelMaNv);
+            this.Controls.Add(this.inpMaNv);
             this.Controls.Add(this.btnSearchNcc);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.inpGiaNhap);
@@ -288,6 +342,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.inpSoLuong);
             this.Name = "NhapKhoForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Nhập sản phẩm vào kho";
             this.Load += new System.EventHandler(this.NhapKhoForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.listSanPham)).EndInit();
@@ -320,5 +375,9 @@
         private System.Windows.Forms.DataGridViewButtonColumn Remove;
         private System.Windows.Forms.ErrorProvider errorProviderSoLuong;
         private System.Windows.Forms.ErrorProvider errorProviderGiaNhap;
+        private System.Windows.Forms.Label labelTenNv;
+        private System.Windows.Forms.TextBox inpTenNv;
+        private System.Windows.Forms.Label labelMaNv;
+        private System.Windows.Forms.TextBox inpMaNv;
     }
 }

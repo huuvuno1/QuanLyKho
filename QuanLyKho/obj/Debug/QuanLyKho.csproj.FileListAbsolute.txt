@@ -35,11 +35,10 @@ D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.csproj.CopyComplete
 D:\code\aspx\QuanLyKho\QuanLyKho\bin\Debug\AxShockwaveFlashObjects.dll
 D:\code\aspx\QuanLyKho\QuanLyKho\bin\Debug\CrystalDecisions.Windows.Forms.dll
 D:\code\aspx\QuanLyKho\QuanLyKho\bin\Debug\ShockwaveFlashObjects.dll
-D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.Report.ReportCuaHangForm.resources
-D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.Report.ReportNhaCungCapForm.resources
-D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.Report.ReportSanPhamForm.resources
 D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.Report.ReportHoaDonNhapForm.resources
 D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.Dialog.FormThemSanPham.resources
 D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.HoaDonNhapKhoForm.resources
 D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.SanPhamForm.resources
 D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.Dialog.FormChiTietSanPham.resources
+D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.HoaDonXuatKhoForm.resources
+D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.Report.ReportHoaDonXuatForm.resources

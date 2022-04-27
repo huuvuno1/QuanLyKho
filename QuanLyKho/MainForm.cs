@@ -22,6 +22,7 @@ namespace QuanLyKho
 
         private void Main_Load(object sender, EventArgs e)
         {
+            this.Text = "Quản lý kho";
             ToggleForm<SanPhamForm>();
         }
 
@@ -45,6 +46,7 @@ namespace QuanLyKho
 
         private void nhàCungCấpToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.Text = "Quản lý nhà cung cấp";
             ToggleForm<NccForm>();
         }
 
@@ -60,21 +62,26 @@ namespace QuanLyKho
 
         private void xemDanhSáchToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.Text = "Quản lý sản phẩm";
             ToggleForm<SanPhamForm>();
         }
 
         private void cửaHàngToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.Text = "Quản lý cửa hàng";
+
             ToggleForm<CuaHangForm>();
         }
 
         private void nhânViênToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.Text = "Quản lý nhân viên";
             ToggleForm<NhanVienForm>();
         }
 
         private void hóaĐơnNhậpToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.Text = "Quản lý hóa đơn nhập kho";
             ToggleForm<HoaDonNhapKhoForm>();
         }
 
@@ -99,37 +106,52 @@ namespace QuanLyKho
 
         private void hóaĐơnXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.Text = "Quản lý hóa đơn xuất kho";
+            ToggleForm<HoaDonXuatKhoForm>();
         }
 
         private void nhậpHàngToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.Text = "Nhập kho";
             ToggleForm<NhapKhoForm>();
         }
 
         private void xuấtKhoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.Text = "Xuất kho";
             ToggleForm<XuatKhoForm>();
 
         }
 
-        private void cửaHàngToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            ToggleForm<ReportCuaHangForm>();
-        }
-
-        private void nhàCungCấpToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            ToggleForm<ReportNhaCungCapForm>();
-        }
-
-        private void sảnPhẩmToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            new ReportSanPhamForm().ShowDialog(this);
-        }
 
         private void hóaĐơnNhậpToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             new ReportHoaDonNhapForm().ShowDialog(this);
+        }
+
+        private void hóaĐơnXuấtKhoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void hóaĐơnXuấtKhoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new ReportHoaDonXuatForm().ShowDialog(this);
+        }
+
+        private void hóaĐơnNhậpKhoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new ReportHoaDonNhapForm().ShowDialog(this);
+        }
+
+        private void closeApp(object sender, FormClosingEventArgs e)
+        {
+            
+        }
+
+        private void closeApp(object sender, FormClosedEventArgs e)
+        {
+            
         }
     }
 }

@@ -14,17 +14,61 @@ using System.Windows.Forms;
 
 namespace QuanLyKho
 {
-    public partial class NhapKhoForm : Form
+    internal partial class NhapKhoForm : Form
     {
+        private HoaDonNhap billDetail;
+
         public NhapKhoForm()
         {
             InitializeComponent();
         }
-        
+
+        public NhapKhoForm(HoaDonNhap bill)
+        {
+            billDetail = bill;
+            InitializeComponent();
+        }
+
         private void NhapKhoForm_Load(object sender, EventArgs e)
         {
-            FillDataToProductCombobox();
-            FillDataToNccCombobox();
+            // form nhập bình thường
+            if (billDetail == null)
+            {
+                FillDataToProductCombobox();
+                FillDataToNccCombobox();
+            }
+            // form được mở để xem chi tiết
+            else
+            {
+                NhapKhoForm_Load_Bill_Detail();
+            }
+        }
+
+        private void NhapKhoForm_Load_Bill_Detail()
+        {
+            DisableAllButton();
+            this.Text = "Chi tiết hóa đơn " + billDetail.MaHD;
+
+            // load data to combobox ncc
+            var cb_ncc = new BindingList<NhaCungCap>();
+            cb_ncc.Add(new NhaCungCap(billDetail.MaNhaCungCap, billDetail.TenNhaCungCap));
+            comboBoxNcc.DataSource = cb_ncc;
+            comboBoxNcc.DisplayMember = "Name";
+            comboBoxNcc.ValueMember = "Id";
+
+            // load info created bill by employee
+            inpMaNv.Visible = inpTenNv.Visible = labelMaNv.Visible = labelTenNv.Visible = true;
+            inpMaNv.Text = billDetail.MaNhanVienLap.ToString();
+            inpTenNv.Text = billDetail.TenNhanVienLap;
+
+            // load list products in bill
+            listSanPham.DataSource = HoaDonNhapDAL.GetProductsInBill(billDetail.MaHD);
+        }
+
+        private void DisableAllButton()
+        {
+            comboxProduct.Enabled = comboBoxNcc.Enabled = inpSoLuong.Enabled = inpGiaNhap.Enabled = false;
+            btnAddProductToBill.Enabled = btnSearchNcc.Enabled = button1.Enabled = button3.Enabled = button4.Enabled = button5.Enabled = false;
         }
 
         private void inpSearch_TextChanged(object sender, EventArgs e)
@@ -85,9 +129,11 @@ namespace QuanLyKho
 
         private void listSanPham_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            BindingList<SpHoaDonNhap> list = (BindingList<SpHoaDonNhap>)listSanPham.DataSource;
+            if (list == null || list.Count == 0)
+                return;
             if (listSanPham.Columns[e.ColumnIndex].Name == "Remove")
             {
-                BindingList<SpHoaDon> list = (BindingList<SpHoaDon>)listSanPham.DataSource;
                 for(var i = 0; i < list.Count; i++)
                 {
                     if (i == e.RowIndex)
@@ -101,13 +147,22 @@ namespace QuanLyKho
 
         private void button5_Click(object sender, EventArgs e)
         {
-            string now = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            BindingList<SpHoaDon> list_sp = (BindingList<SpHoaDon>)listSanPham.DataSource;
-            NhaCungCap ncc = (NhaCungCap)comboBoxNcc.SelectedItem;
-            HoaDonNhapDAL.CreateHoaDonNhap(now, 0, ncc.Id, list_sp);
-            MessageBox.Show("Lưu thành công!");
-            list_sp = new BindingList<SpHoaDon>();
-            listSanPham.DataSource = list_sp;
+            BindingList<SpHoaDonNhap> list_sp = (BindingList<SpHoaDonNhap>)listSanPham.DataSource;
+            if (list_sp == null || list_sp.Count == 0)
+            {
+                MessageBox.Show("Cảnh báo!", "Bạn chưa thêm sản phẩm nào!");
+                return;
+            } 
+            var result = MessageBox.Show("Hoàn thành đơn nhập hàng?", "Xác nhận!", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
+            {
+                string now = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                NhaCungCap ncc = (NhaCungCap)comboBoxNcc.SelectedItem;
+                NhanVien nv = (NhanVien)MyApplication.Get("user_login");
+                HoaDonNhapDAL.CreateHoaDonNhap(now, nv.MaNv, ncc.Id, list_sp);
+                MessageBox.Show("Lưu thành công!");
+                list_sp.Clear();
+            }
         }
 
         private void btnSearchNcc_Click(object sender, EventArgs e)
@@ -124,14 +179,12 @@ namespace QuanLyKho
                 return;
             }
 
-            BindingList<SpHoaDon> sp = (BindingList<SpHoaDon>)listSanPham.DataSource;
+            BindingList<SpHoaDonNhap> sp = (BindingList<SpHoaDonNhap>)listSanPham.DataSource;
 
             if (sp == null)
             {
-                sp = new BindingList<SpHoaDon>();
+                sp = new BindingList<SpHoaDonNhap>();
             }
-
-            var comboNcc = (NhaCungCap)comboBoxNcc.SelectedItem;
 
             var comboSp = (SanPham)comboxProduct.SelectedItem;
             var id_sp = comboSp.MaSp;
@@ -145,7 +198,7 @@ namespace QuanLyKho
             {
                 if (item.MaSp == id_sp)
                 {
-                    var confirmResult = MessageBox.Show("Sản phẩm được nhà cung cấp này cung cấp đã được thêm trước đó.\n Bạn muốn ghi đè không?",
+                    var confirmResult = MessageBox.Show("Sản phẩm được đã được thêm vào hóa đơn.\n Bạn muốn ghi đè không?",
                                      "Cảnh báo!!",
                                      MessageBoxButtons.OKCancel);
                     if (confirmResult == DialogResult.OK)
@@ -154,11 +207,12 @@ namespace QuanLyKho
                         item.GiaNhap = gia_nhap;
                     }
                     isExistInList = true;
+                    break;
                 }
             }
 
             if (!isExistInList)
-                sp.Add(new SpHoaDon(id_sp, ten_sp, so_luong, gia_nhap));
+                sp.Add(new SpHoaDonNhap(id_sp, ten_sp, so_luong, gia_nhap));
 
             inpGiaNhap.Text = inpSoLuong.Text = "";
 
@@ -207,6 +261,11 @@ namespace QuanLyKho
         bool IsNumber(string text)
         {
             return !string.IsNullOrWhiteSpace(text) && Regex.IsMatch(text, "^[0-9]*$");
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

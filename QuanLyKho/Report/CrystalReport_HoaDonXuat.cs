@@ -16,14 +16,14 @@ namespace QuanLyKho.Report {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class CrystalReport_SanPham : ReportClass {
+    public class CrystalReport_HoaDonXuat : ReportClass {
         
-        public CrystalReport_SanPham() {
+        public CrystalReport_HoaDonXuat() {
         }
         
         public override string ResourceName {
             get {
-                return "CrystalReport_SanPham.rpt";
+                return "CrystalReport_HoaDonXuat.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace QuanLyKho.Report {
         
         public override string FullResourceName {
             get {
-                return "QuanLyKho.Report.CrystalReport_SanPham.rpt";
+                return "QuanLyKho.Report.CrystalReport_HoaDonXuat.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace QuanLyKho.Report {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedCrystalReport_SanPham : Component, ICachedReport {
+    public class CachedCrystalReport_HoaDonXuat : Component, ICachedReport {
         
-        public CachedCrystalReport_SanPham() {
+        public CachedCrystalReport_HoaDonXuat() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace QuanLyKho.Report {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            CrystalReport_SanPham rpt = new CrystalReport_SanPham();
+            CrystalReport_HoaDonXuat rpt = new CrystalReport_HoaDonXuat();
             rpt.Site = this.Site;
             return rpt;
         }

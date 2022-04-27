@@ -1,6 +1,8 @@
-﻿using QuanLyKho.Utils;
+﻿using QuanLyKho.Model;
+using QuanLyKho.Utils;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -53,6 +55,52 @@ namespace QuanLyKho.DAL
             catch (Exception e)
             {
                 return new Result(false, e.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        public static BindingList<CuaHang> SearchList(string keyword)
+        {
+            SqlConnection sqlConnection = new SqlConnection(sqlConn);
+            sqlConnection.Open();
+            BindingList<CuaHang> list_ncc = new BindingList<CuaHang>();
+            var cmd = sqlConnection.CreateCommand();
+            cmd.CommandText = "select top 50 * from CuaHang where ten like @ten";
+            cmd.Parameters.AddWithValue("ten", "%" + keyword + "%");
+            var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                CuaHang cuaHang = new CuaHang();
+                cuaHang.Ten = reader["Ten"].ToString();
+                cuaHang.MaCh = int.Parse(reader["MaCh"].ToString());
+                cuaHang.DiaChi = reader["DiaChi"].ToString();
+                cuaHang.Email = reader["Email"].ToString();
+                cuaHang.SDT = reader["SDT"].ToString();
+                list_ncc.Add(cuaHang);
+            }
+            reader.Close();
+            return list_ncc;
+        }
+
+        internal static Result Delete(int mach)
+        {
+            SqlConnection con = new SqlConnection(sqlConn);
+            try
+            {
+                con.Open();
+                SqlCommand sqlCmd = new SqlCommand();
+                sqlCmd.Connection = con;
+                sqlCmd.CommandType = CommandType.Text;
+                sqlCmd.CommandText = $@"DELETE FROM CuaHang WHERE MaCh={mach};";
+                sqlCmd.ExecuteNonQuery();
+                return new Result(true, "OK");
+            }
+            catch (Exception e)
+            {
+                return new Result(false, "Không thể xóa, thông cửa hàng này đang được liên kết với bảng khác");
             }
             finally
             {

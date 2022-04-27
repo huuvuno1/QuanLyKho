@@ -12,6 +12,11 @@ namespace QuanLyKho.Model
         public string Name { get; set; }
         public string Address { get; set; }
 
-
+        public NhaCungCap() { }
+        public NhaCungCap(int id, string name) 
+        {
+            Id = id;
+            Name = name;
+        }
     }
 }

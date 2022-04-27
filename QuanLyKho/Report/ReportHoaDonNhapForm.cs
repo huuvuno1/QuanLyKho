@@ -1,9 +1,11 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
+using QuanLyKho.DAL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +27,14 @@ namespace QuanLyKho.Report
             //report.RecordSelectionFormula = "{tbl_detailOrder.price}";
             crystalReportViewer1.ReportSource = report;
             crystalReportViewer1.RefreshReport();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CrystalReport_HoaDonNhap crystal = new CrystalReport_HoaDonNhap();
+            crystal.SetDataSource(HoaDonNhapDAL.GetHoaDon(float.Parse(inpMinTien.Text), float.Parse(inpMaxTien.Text)));
+            crystalReportViewer1.ReportSource = crystal;
+            crystalReportViewer1.Refresh();
         }
     }
 }

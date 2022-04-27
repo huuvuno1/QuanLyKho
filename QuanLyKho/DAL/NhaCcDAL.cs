@@ -1,4 +1,5 @@
 ﻿using QuanLyKho.Model;
+using QuanLyKho.Utils;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -34,7 +35,7 @@ namespace QuanLyKho.DAL
             sqlConnection.Open();
             List<NhaCungCap> list_ncc = new List<NhaCungCap>();
             var cmd = sqlConnection.CreateCommand();
-            cmd.CommandText = "select top 20 * from NhaCungCap where ten like @ten";
+            cmd.CommandText = "select top 50 * from NhaCungCap where ten like @ten";
             cmd.Parameters.AddWithValue("ten", "%" + keyword + "%");
             var reader = cmd.ExecuteReader();
             while (reader.Read())
@@ -47,6 +48,22 @@ namespace QuanLyKho.DAL
             }
             reader.Close();
             return list_ncc;
+        }
+
+        internal static Result Detele(int ma_ncc)
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection(Constant.SQL_CONNECTION_STRING);
+                conn.Open();
+                SqlCommand cmd = new SqlCommand($@"DELETE FROM NhaCungCap WHERE MaNcc='{ma_ncc}';", conn);
+                cmd.ExecuteNonQuery();
+                return new Result(true, "OK");
+            }
+            catch
+            {
+                return new Result(false, "Không thể xóa do có ràng buộc");
+            }
         }
 
 
