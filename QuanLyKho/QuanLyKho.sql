@@ -342,7 +342,9 @@ END
 select SoLuongXuat from ChiTietHoaDonXuat cthdx 
 
 
-
+select * FROM SanPham sp 
+inner join ChiTietSanPham ctsp on sp.MaSp = ctsp.MaSp 
+WHERE giatien < 50000 and giatien > 10000
 
 
 

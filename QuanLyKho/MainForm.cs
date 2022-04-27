@@ -153,5 +153,10 @@ namespace QuanLyKho
         {
             
         }
+
+        private void sảnPhẩmChiTiếtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToggleForm<FormSanPhamChiTiet>();
+        }
     }
 }

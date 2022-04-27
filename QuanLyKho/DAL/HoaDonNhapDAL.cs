@@ -106,6 +106,7 @@ namespace QuanLyKho.DAL
                 sp.GiaNhap = int.Parse(reader["GiaNhap"].ToString());
                 sp.SoLuongNhap = int.Parse(reader["SoLuong"].ToString());
                 sp.TenSanPham = reader["Ten"].ToString();
+                sp.TongTien = sp.SoLuongNhap * sp.GiaNhap;
                 list.Add(sp);
             }
             conn.Close();

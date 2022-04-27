@@ -69,6 +69,18 @@
     <Compile Include="Dialog\FormThemSanPham.Designer.cs">
       <DependentUpon>FormThemSanPham.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDemo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDemo.Designer.cs">
+      <DependentUpon>FormDemo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSanPhamChiTiet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSanPhamChiTiet.Designer.cs">
+      <DependentUpon>FormSanPhamChiTiet.cs</DependentUpon>
+    </Compile>
     <Compile Include="HoaDonNhapKhoForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +133,7 @@
     <Compile Include="NccForm.Designer.cs">
       <DependentUpon>NccForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="NguoiDung.cs" />
     <Compile Include="NhanVienForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,6 +202,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialog\FormThemSanPham.resx">
       <DependentUpon>FormThemSanPham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDemo.resx">
+      <DependentUpon>FormDemo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSanPhamChiTiet.resx">
+      <DependentUpon>FormSanPhamChiTiet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HoaDonNhapKhoForm.resx">
       <DependentUpon>HoaDonNhapKhoForm.cs</DependentUpon>

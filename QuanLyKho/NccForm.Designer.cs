@@ -55,11 +55,19 @@
             this.nhaCungCapBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nhaCungCapTableAdapter1 = new QuanLyKho.quanlykhoDataSetTableAdapters.NhaCungCapTableAdapter();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.errorProviderTen = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderDiaChi = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderSdt = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderEmail = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Ncc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quanlykhoDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quanlykhoDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quanlykhoDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nhaCungCapBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderTen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderDiaChi)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderSdt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderEmail)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView_Ncc
@@ -200,7 +208,7 @@
             // 
             this.inpEmail.Enabled = false;
             this.inpEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inpEmail.Location = new System.Drawing.Point(655, 86);
+            this.inpEmail.Location = new System.Drawing.Point(655, 136);
             this.inpEmail.Name = "inpEmail";
             this.inpEmail.Size = new System.Drawing.Size(312, 30);
             this.inpEmail.TabIndex = 8;
@@ -209,7 +217,7 @@
             // 
             this.inpPhoneNumber.Enabled = false;
             this.inpPhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inpPhoneNumber.Location = new System.Drawing.Point(655, 134);
+            this.inpPhoneNumber.Location = new System.Drawing.Point(655, 86);
             this.inpPhoneNumber.Name = "inpPhoneNumber";
             this.inpPhoneNumber.Size = new System.Drawing.Size(312, 30);
             this.inpPhoneNumber.TabIndex = 9;
@@ -290,6 +298,22 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // errorProviderTen
+            // 
+            this.errorProviderTen.ContainerControl = this;
+            // 
+            // errorProviderDiaChi
+            // 
+            this.errorProviderDiaChi.ContainerControl = this;
+            // 
+            // errorProviderSdt
+            // 
+            this.errorProviderSdt.ContainerControl = this;
+            // 
+            // errorProviderEmail
+            // 
+            this.errorProviderEmail.ContainerControl = this;
+            // 
             // NccForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -319,6 +343,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.quanlykhoDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quanlykhoDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nhaCungCapBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderTen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderDiaChi)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderSdt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderEmail)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -351,5 +379,9 @@
         private System.Windows.Forms.BindingSource nhaCungCapBindingSource;
         private quanlykhoDataSetTableAdapters.NhaCungCapTableAdapter nhaCungCapTableAdapter1;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.ErrorProvider errorProviderTen;
+        private System.Windows.Forms.ErrorProvider errorProviderDiaChi;
+        private System.Windows.Forms.ErrorProvider errorProviderSdt;
+        private System.Windows.Forms.ErrorProvider errorProviderEmail;
     }
 }

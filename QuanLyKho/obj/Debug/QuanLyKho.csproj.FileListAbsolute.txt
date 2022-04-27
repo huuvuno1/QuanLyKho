@@ -42,3 +42,5 @@ D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.SanPhamForm.resources
 D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.Dialog.FormChiTietSanPham.resources
 D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.HoaDonXuatKhoForm.resources
 D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.Report.ReportHoaDonXuatForm.resources
+D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.FormDemo.resources
+D:\code\aspx\QuanLyKho\QuanLyKho\obj\Debug\QuanLyKho.FormSanPhamChiTiet.resources

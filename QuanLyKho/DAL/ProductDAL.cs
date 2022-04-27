@@ -131,5 +131,33 @@ namespace QuanLyKho.DAL
                 con.Close();
             }
         }
+
+        public static BindingList<SanPhamChiTiet> Filter(float min_tien, float max_tien)
+        {
+            SqlConnection conn = new SqlConnection(Constant.SQL_CONNECTION_STRING);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand($@"select * FROM SanPham sp 
+                            inner join ChiTietSanPham ctsp on sp.MaSp = ctsp.MaSp 
+                            WHERE giatien <= {max_tien} and giatien >= {min_tien}
+                            ", conn);
+            var reader = cmd.ExecuteReader();
+
+            BindingList<SanPhamChiTiet> list = new BindingList<SanPhamChiTiet>();
+
+            while (reader.Read())
+            {
+                SanPhamChiTiet sp = new SanPhamChiTiet();
+                sp.DonViTinh = reader["DonViTinh"].ToString();
+                sp.Ten = reader["Ten"].ToString();
+                sp.MoTa = reader["Ten"].ToString();
+                sp.SoLuong = float.Parse(reader["SoLuongTrongKho"].ToString());
+                sp.Gia = float.Parse(reader["GiaTien"].ToString());
+                sp.MaSp = int.Parse(reader["MaSp"].ToString());
+
+                list.Add(sp);
+            }
+            conn.Close();
+            return list;
+        }
     }
 }

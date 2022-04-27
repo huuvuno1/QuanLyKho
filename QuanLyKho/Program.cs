@@ -18,6 +18,7 @@ namespace QuanLyKho
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new MainForm());
             Application.Run(new LoginForm());
+            //Application.Run(new FormDemo());
         }
     }
 }

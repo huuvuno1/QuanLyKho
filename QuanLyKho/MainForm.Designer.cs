@@ -51,6 +51,7 @@
             this.okeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.okeEmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fragement = new System.Windows.Forms.Panel();
+            this.sảnPhẩmChiTiếtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip3.SuspendLayout();
             this.SuspendLayout();
@@ -64,7 +65,8 @@
             this.nhàCungCấpToolStripMenuItem,
             this.hóaĐơnToolStripMenuItem,
             this.nhânViênToolStripMenuItem,
-            this.báoCáoToolStripMenuItem});
+            this.báoCáoToolStripMenuItem,
+            this.sảnPhẩmChiTiếtToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1062, 28);
@@ -228,6 +230,14 @@
             this.fragement.TabIndex = 6;
             this.fragement.Paint += new System.Windows.Forms.PaintEventHandler(this.fragement_Paint);
             // 
+            // sảnPhẩmChiTiếtToolStripMenuItem
+            // 
+            this.sảnPhẩmChiTiếtToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("sảnPhẩmChiTiếtToolStripMenuItem.Image")));
+            this.sảnPhẩmChiTiếtToolStripMenuItem.Name = "sảnPhẩmChiTiếtToolStripMenuItem";
+            this.sảnPhẩmChiTiếtToolStripMenuItem.Size = new System.Drawing.Size(158, 24);
+            this.sảnPhẩmChiTiếtToolStripMenuItem.Text = "Sản phẩm chi tiết";
+            this.sảnPhẩmChiTiếtToolStripMenuItem.Click += new System.EventHandler(this.sảnPhẩmChiTiếtToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -274,6 +284,7 @@
         private System.Windows.Forms.ToolStripMenuItem báoCáoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hóaĐơnNhậpKhoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hóaĐơnXuấtKhoToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem sảnPhẩmChiTiếtToolStripMenuItem;
     }
 }
 

@@ -36,5 +36,10 @@ namespace QuanLyKho.Report
             crystalReportViewer1.ReportSource = crystal;
             crystalReportViewer1.Refresh();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

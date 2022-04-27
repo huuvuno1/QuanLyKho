@@ -45,6 +45,7 @@
             this.inpUsername.Name = "inpUsername";
             this.inpUsername.Size = new System.Drawing.Size(385, 30);
             this.inpUsername.TabIndex = 0;
+            this.inpUsername.Text = "huuvuno1";
             // 
             // label1
             // 
@@ -74,6 +75,7 @@
             this.inpPassword.PasswordChar = '*';
             this.inpPassword.Size = new System.Drawing.Size(385, 30);
             this.inpPassword.TabIndex = 3;
+            this.inpPassword.Text = "huuvuno1";
             // 
             // label3
             // 

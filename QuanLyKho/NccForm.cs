@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -36,7 +37,46 @@ namespace QuanLyKho
                 string address = inpAddress.Text;
                 string phoneNumber = inpPhoneNumber.Text;
                 string email = inpEmail.Text;
-                this.nhaCungCapTableAdapter1.Insert(name, address, phoneNumber, email);
+
+                bool check = true;
+                if (name.Length < 5)
+                {
+                    errorProviderTen.SetError(inpName, "Ten phai lon hon 5 ky tu");
+                    check = false;
+                }
+                else
+                    errorProviderTen.Clear();
+                
+                if (address.Length < 5)
+                {
+                    errorProviderDiaChi.SetError(inpAddress, "Dia chi phai lon hon 5 ky tu");
+                    check = false;
+                }
+                else
+                {
+                    errorProviderDiaChi.Clear();
+                }
+
+                if (!Regex.IsMatch(phoneNumber, "^0[0-9]+$", RegexOptions.Singleline))
+                {
+                    errorProviderSdt.SetError(inpPhoneNumber, "So dien thoai phai la so bat dau bang 0 va chi chua so");
+                    check = false;
+                }
+                else
+                    errorProviderSdt.Clear();
+
+                if (!Regex.IsMatch(email, @"^[a-z0-9-A-Z]+@.+\.[a-z]+"))
+                {
+                    errorProviderEmail.SetError(inpEmail, "Email sai dinh dang");
+                    check = false;
+                }
+                else
+                    errorProviderEmail.Clear();
+
+                if (check == true)
+                    this.nhaCungCapTableAdapter1.Insert(name, address, phoneNumber, email);
+                else
+                    return;
                 dataGridView_Ncc.DataSource = NhaCcDAL.Search("");
                 inpEmail.Text = inpName.Text = inpPhoneNumber.Text = inpAddress.Text = "";
                 inpAddress.Enabled = inpName.Enabled = inpPhoneNumber.Enabled = inpEmail.Enabled = false;
