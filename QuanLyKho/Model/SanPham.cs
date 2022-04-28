@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,9 +9,13 @@ namespace QuanLyKho.Model
 {
     public class SanPham
     {
+        [DisplayName("Mã SP")]
         public int MaSp { get; set; }
+        [DisplayName("Tên Sp")]
         public string Ten { get; set; }
+        [DisplayName("Mô tả")]
         public string MoTa { get; set; }
+        [DisplayName("Đơn vị tính")]
         public string DonViTinh { get; set; }
 
         public SanPham() { }
